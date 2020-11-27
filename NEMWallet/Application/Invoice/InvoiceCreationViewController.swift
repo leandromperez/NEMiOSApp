@@ -104,7 +104,7 @@ final class InvoiceCreationViewController: UIViewController {
         invoiceAccountTitleTextField.placeholder = "ENTER_NAME".localized()
         invoiceAmountTextField.placeholder = "ENTER_AMOUNT".localized()
         invoiceMessageTextField.placeholder = "ENTER_MESSAGE".localized()
-        createInvoiceButton.setTitle("CREATE".localized(), for: UIControlState())
+        createInvoiceButton.setTitle("CREATE".localized(), for: UIControl.State())
         
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
@@ -149,7 +149,7 @@ final class InvoiceCreationViewController: UIViewController {
         }
         if invoiceMessage.hexadecimalStringUsingEncoding(String.Encoding.utf8)?.asByteArray().count > 255 {
             
-            let messageLengthAlert = UIAlertController(title: "INFO".localized(), message: "MESSAGE_LENGTH".localized(), preferredStyle: UIAlertControllerStyle.alert)
+            let messageLengthAlert = UIAlertController(title: "INFO".localized(), message: "MESSAGE_LENGTH".localized(), preferredStyle: UIAlertController.Style.alert)
             
             messageLengthAlert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
             

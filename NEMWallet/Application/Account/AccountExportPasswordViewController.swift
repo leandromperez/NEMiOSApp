@@ -74,7 +74,7 @@ final class AccountExportPasswordViewController: UIViewController {
         descriptionLabel.text = "ENTET_PASSWORD_EXPORT".localized()
         descriptionLabel.text = "PASSWORD_PLACEHOLDER_EXPORT".localized()
         passwordTextField.placeholder = "PASSWORD_PLACEHOLDER".localized()
-        confirmationButton.setTitle("CONFIRM".localized(), for: UIControlState())
+        confirmationButton.setTitle("CONFIRM".localized(), for: UIControl.State())
         
         containerView.layer.cornerRadius = 5
         containerView.clipsToBounds = true
@@ -86,11 +86,11 @@ final class AccountExportPasswordViewController: UIViewController {
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -109,7 +109,7 @@ final class AccountExportPasswordViewController: UIViewController {
             showAlert(withMessage: "FIELDS_EMPTY_ERROR".localized())
             return
         }
-        if defaultPasswordSwitch.isOn == false && passwordTextField.text!.characters.count < 6 {
+        if defaultPasswordSwitch.isOn == false && passwordTextField.text!.count < 6 {
             showAlert(withMessage: "PASSOWORD_LENGTH_ERROR".localized())
             return
         }

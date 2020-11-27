@@ -64,10 +64,10 @@ final class AccountExportViewController: UIViewController {
     fileprivate func updateViewControllerAppearance() {
         
         customNavigationItem.title = "EXPORT_ACCOUNT".localized()
-        saveQRCodeImageButton.setTitle("SAVE_QR".localized(), for: UIControlState())
-        shareQRCodeImageButton.setTitle("SHARE_QR".localized(), for: UIControlState())
+        saveQRCodeImageButton.setTitle("SAVE_QR".localized(), for: UIControl.State())
+        shareQRCodeImageButton.setTitle("SHARE_QR".localized(), for: UIControl.State())
         publicKeyHeadingLabel.text = "PUBLIC_KEY".localized()
-        showPrivateKeyButton.setTitle("VIEW_PRIVATE_KEY".localized(), for: UIControlState())
+        showPrivateKeyButton.setTitle("VIEW_PRIVATE_KEY".localized(), for: UIControl.State())
     }
     
     /**
@@ -87,7 +87,7 @@ final class AccountExportViewController: UIViewController {
         
         if privateKeyTextView.isHidden == false {
             
-            showPrivateKeyButton.setTitle("VIEW_PRIVATE_KEY".localized(), for: UIControlState())
+            showPrivateKeyButton.setTitle("VIEW_PRIVATE_KEY".localized(), for: UIControl.State())
             privateKeyTextView.isHidden = true
             
         } else {
@@ -98,7 +98,7 @@ final class AccountExportViewController: UIViewController {
             
             accountExportingAlert.addAction(UIAlertAction(title: "SHOW_PRIVATE_KEY".localized(), style: .destructive, handler: { [unowned self] (action) in
                 
-                self.showPrivateKeyButton.setTitle("HIDE_PRIVATE_KEY".localized(), for: UIControlState())
+                self.showPrivateKeyButton.setTitle("HIDE_PRIVATE_KEY".localized(), for: UIControl.State())
                 self.privateKeyTextView.isHidden = false
             }))
             

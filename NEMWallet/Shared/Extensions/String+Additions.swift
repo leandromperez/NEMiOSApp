@@ -94,11 +94,11 @@ extension String {
     func nemAddressNormalised() -> String {
         var newString = ""
         
-        for i in stride(from: 0, to: self.characters.count, by: 6) {
-            let substring = (self as NSString).substring(with: NSRange(location: i, length: ((self.characters.count - i) >= 6) ? 6 : self.characters.count - i))
+        for i in stride(from: 0, to: self.count, by: 6) {
+            let substring = (self as NSString).substring(with: NSRange(location: i, length: ((self.count - i) >= 6) ? 6 : self.count - i))
             newString += substring + "-"
         }
-        let length :Int = newString.characters.count - 1
+        let length :Int = newString.count - 1
         return (newString as NSString).substring(with: NSRange(location: 0, length: length))
     }
     

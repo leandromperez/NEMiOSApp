@@ -67,7 +67,7 @@ final class TimeManager {
                 
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
-                    let responseJSON = JSON(data: response.data)
+                    let responseJSON = try JSON(data: response.data)
                     
                     self.networkTimestamp = responseJSON["receiveTimeStamp"].doubleValue / 1000
                     

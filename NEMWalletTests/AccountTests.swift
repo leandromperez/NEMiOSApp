@@ -45,7 +45,7 @@ final class AccountTests: QuickSpec {
                     
                     let networkPrefix = Constants.activeNetwork == Constants.testNetwork ? "T" : "N"
                     expect(accounts[generatedAccountIndex].address).to(beginWith(networkPrefix))
-                    expect(accounts[generatedAccountIndex].address.characters.count).to(equal(40))
+                    expect(accounts[generatedAccountIndex].address.count).to(equal(40))
                 }
                 
                 it("generates a valid public and private key") {

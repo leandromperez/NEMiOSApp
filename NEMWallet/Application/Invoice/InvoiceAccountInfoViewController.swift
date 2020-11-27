@@ -57,11 +57,11 @@ final class InvoiceAccountInfoViewController: UIViewController {
         accountAddressHeadingLabel.text = "\("MY_ADDRESS".localized()):"
         accountTitleHeadingLabel.text = "\("MY_NAME".localized()):"
         accountTitleTextField.placeholder = "YOUR_NAME".localized()
-        saveAccountQRCodeButton.setTitle("SAVE_QR".localized(), for: UIControlState())
-        shareAccountQRCodeButton.setTitle("SHARE_QR".localized(), for: UIControlState())
-        copyAccountAddressButton.setTitle("COPY_ADDRESS".localized(), for: UIControlState())
-        shareAccountAddressButton.setTitle("SHARE_ADDRESS".localized(), for: UIControlState())
-        editAccountTitleButton.setImage(#imageLiteral(resourceName: "Edit").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControlState())
+        saveAccountQRCodeButton.setTitle("SAVE_QR".localized(), for: UIControl.State())
+        shareAccountQRCodeButton.setTitle("SHARE_QR".localized(), for: UIControl.State())
+        copyAccountAddressButton.setTitle("COPY_ADDRESS".localized(), for: UIControl.State())
+        shareAccountAddressButton.setTitle("SHARE_ADDRESS".localized(), for: UIControl.State())
+        editAccountTitleButton.setImage(#imageLiteral(resourceName: "Edit").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControl.State())
     }
     
     /**

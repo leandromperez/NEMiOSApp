@@ -8,7 +8,7 @@ extension Data {
         
         var result: String = ""
 
-        for char in sha256description.characters {
+        for char in sha256description {
             switch char {
             case "0", "1", "2", "3", "4", "5", "6", "7","8","9", "a", "b", "c", "d", "e", "f":
                 result.append(char)
@@ -26,9 +26,9 @@ extension Data {
             
         var temp = ""
         
-        for char in string.characters {
+        for char in string {
             temp+=String(char)
-            if(temp.characters.count == 2) {
+            if(temp.count == 2) {
                 let scanner = Scanner(string: temp)
                 var value: CUnsignedInt = 0
                 scanner.scanHexInt32(&value)
@@ -50,7 +50,7 @@ extension NSData {
         
         var result: String = ""
         
-        for char in sha256description.characters {
+        for char in sha256description {
             switch char {
             case "0", "1", "2", "3", "4", "5", "6", "7","8","9", "a", "b", "c", "d", "e", "f":
                 result.append(char)
@@ -68,9 +68,9 @@ extension NSData {
         
         var temp = ""
         
-        for char in string.characters {
+        for char in string {
             temp+=String(char)
-            if(temp.characters.count == 2) {
+            if(temp.count == 2) {
                 let scanner = Scanner(string: temp)
                 var value: CUnsignedInt = 0
                 scanner.scanHexInt32(&value)

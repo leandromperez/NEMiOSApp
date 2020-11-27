@@ -27,7 +27,7 @@ final class AccountChooserButton: UIButton {
         layer.borderWidth = 1
         
         if let imageView = self.imageView {
-            imageView.contentMode =  UIViewContentMode.scaleAspectFit
+            imageView.contentMode =  UIView.ContentMode.scaleAspectFit
             imageView.frame = CGRect(x: frame.width - frame.height * 0.75 - 5, y: frame.height * 0.125, width: frame.height * 0.75, height: frame.height * 0.75)
         }
         

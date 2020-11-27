@@ -142,7 +142,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
         transactionAmountTextField.placeholder = "ENTER_AMOUNT".localized()
         transactionMessageTextField.placeholder = "EMPTY_MESSAGE".localized()
         transactionFeeTextField.placeholder = "ENTER_FEE".localized()
-        transactionAccountChooserButton.setImage(#imageLiteral(resourceName: "DropDown").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControlState())
+        transactionAccountChooserButton.setImage(#imageLiteral(resourceName: "DropDown").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControl.State())
         
         transactionRecipientTextField.autoCompleteTextFont = UIFont.systemFont(ofSize: 14)
         transactionRecipientTextField.autoCompleteCellHeight = 35.0
@@ -158,11 +158,11 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -180,16 +180,16 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
         if accountData.cosignatoryOf.count > 0 || forMultisigAccount == true {
             transactionAccountChooserButton.isHidden = false
             transactionSenderLabel.isHidden = true
-            transactionAccountChooserButton.setTitle(accountData.title ?? accountData.address, for: UIControlState())
+            transactionAccountChooserButton.setTitle(accountData.title ?? accountData.address, for: UIControl.State())
         } else {
             transactionAccountChooserButton.isHidden = true
             transactionSenderLabel.isHidden = false
             transactionSenderLabel.text = accountData.title ?? accountData.address
         }
 
-        let amountAttributedString = NSMutableAttributedString(string: "\("AMOUNT".localized()) (\("BALANCE".localized()): ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)])
-        amountAttributedString.append(NSMutableAttributedString(string: "\((accountData.balance / 1000000).format())", attributes: [NSForegroundColorAttributeName: UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1), NSFontAttributeName: UIFont.systemFont(ofSize: 17)]))
-        amountAttributedString.append(NSMutableAttributedString(string: " XEM):", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)]))
+        let amountAttributedString = NSMutableAttributedString(string: "\("AMOUNT".localized()) (\("BALANCE".localized()): ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)])
+        amountAttributedString.append(NSMutableAttributedString(string: "\((accountData.balance / 1000000).format())", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]))
+        amountAttributedString.append(NSMutableAttributedString(string: " XEM):", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)]))
         transactionAmountHeadingLabel.attributedText = amountAttributedString
     }
     
@@ -208,7 +208,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var accountData = try json.mapObject(AccountData.self)
                     
                     if accountData.publicKey == "" {
@@ -256,7 +256,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     let accountData = try json.mapObject(AccountData.self)
                     
                     DispatchQueue.main.async {
@@ -304,7 +304,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                 
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
-                    let responseJSON = JSON(data: response.data)
+                    let responseJSON = try JSON(data: response.data)
                     try self?.validateAnnounceTransactionResult(responseJSON)
                     
                     DispatchQueue.main.async {
@@ -374,7 +374,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
     /// Calculates the fee for the transaction and updates the transaction fee text field accordingly.
     fileprivate func calculateTransactionFee() {
         
-        var transactionAmountString = transactionAmountTextField.text!.replacingOccurrences(of: " ", with: "")
+        let transactionAmountString = transactionAmountTextField.text!.replacingOccurrences(of: " ", with: "")
         var transactionAmount = Double(transactionAmountString) ?? 0.0
 
         if transactionAmount < 0.000001 && transactionAmount != 0 {
@@ -391,11 +391,11 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
             transactionFee += TransactionManager.sharedInstance.calculateFee(forTransactionWithMessage: transactionMessageByteArray, isEncrypted: willEncrypt)
         }
 
-        let transactionFeeAttributedString = NSMutableAttributedString(string: "\("FEE".localized()): (\("MIN".localized()) ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)])
+        let transactionFeeAttributedString = NSMutableAttributedString(string: "\("FEE".localized()): (\("MIN".localized()) ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)])
         transactionFeeAttributedString.append(NSMutableAttributedString(string: "\(transactionFee)", attributes: [
-            NSForegroundColorAttributeName: UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1),
-            NSFontAttributeName: UIFont.systemFont(ofSize: 17)]))
-        transactionFeeAttributedString.append(NSMutableAttributedString(string: " XEM)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)]))
+                                                                            NSAttributedString.Key.foregroundColor: UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1),
+                                                                            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]))
+        transactionFeeAttributedString.append(NSMutableAttributedString(string: " XEM)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)]))
         transactionFeeHeadingLabel.attributedText = transactionFeeAttributedString
         
         if userSetFee == nil || Constants.activeNetwork == Constants.mainNetwork {
@@ -444,7 +444,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
     }
     
     /// Filters all contacts with an account address from the contacts.
-    open func filterContacts() -> [String: String] {
+    public func filterContacts() -> [String: String] {
         
         var filteredContacts = [String: String]()
         
@@ -522,7 +522,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
         } else {
             
             accountChooserViewController!.view.removeFromSuperview()
-            accountChooserViewController!.removeFromParentViewController()
+            accountChooserViewController!.removeFromParent()
             accountChooserViewController = nil
             
             transactionSendButton.isEnabled = true
@@ -599,9 +599,9 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
         
         let transaction = TransferTransaction(version: transactionVersion, timeStamp: transactionTimeStamp, amount: transactionAmount * 1000000, fee: Int(transactionFee * 1000000), recipient: transactionRecipient, message: nil, deadline: transactionDeadline, signer: transactionSigner!)
 
-        let alert = UIAlertController(title: "INFO".localized(), message: "Are you sure you want to send this transaction to \(transactionRecipient.nemAddressNormalised())?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: "Are you sure you want to send this transaction to \(transactionRecipient.nemAddressNormalised())?", preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.destructive, handler: { [weak self] (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.destructive, handler: { [weak self] (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             
             if self != nil {
@@ -671,7 +671,7 @@ extension TransactionSendViewController: AccountChooserDelegate {
         activeAccountData = accountData
         
         accountChooserViewController?.view.removeFromSuperview()
-        accountChooserViewController?.removeFromParentViewController()
+        accountChooserViewController?.removeFromParent()
         accountChooserViewController = nil
         
         transactionSendButton.isEnabled = true

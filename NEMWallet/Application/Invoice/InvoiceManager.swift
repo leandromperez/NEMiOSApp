@@ -19,10 +19,10 @@ final class InvoiceManager {
     // MARK: - Manager Properties
     
     /// The singleton for the invoice manager.
-    open static let sharedInstance = InvoiceManager()
+    public static let sharedInstance = InvoiceManager()
     
     /// A contact that will get fetched from the address book add contact view controller when available.
-    open var contactToCreate: CNMutableContact?
+    public var contactToCreate: CNMutableContact?
 
     // MARK: - Public Manager Methods
 
@@ -31,11 +31,11 @@ final class InvoiceManager {
      
         - Returns: An array of invoices ordered by id (ascending).
      */
-    open func invoices() -> [Invoice] {
+    public func invoices() -> [Invoice] {
         
-        let invoices = DatabaseManager.sharedInstance.dataStack.fetchAll(From(Invoice.self), OrderBy(.ascending("id"))) ?? []
-        
-        return invoices
+        let invoices = try? DatabaseManager.sharedInstance.dataStack.fetchAll(From(Invoice.self), OrderBy<Invoice>(.ascending("id")))
+         
+        return invoices ?? []
     }
     
     /**
@@ -48,7 +48,7 @@ final class InvoiceManager {
      
         - Returns: The result of the operation - success or failure.
      */
-    open func createInvoice(withAccountTitle accountTitle: String, andAccountAddress accountAddress: String, andAmount amount: Int, andMessage message: String, completion: @escaping (_ result: Result, _ invoice: Invoice?) -> Void) {
+    public func createInvoice(withAccountTitle accountTitle: String, andAccountAddress accountAddress: String, andAmount amount: Int, andMessage message: String, completion: @escaping (_ result: Result, _ invoice: Invoice?) -> Void) {
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Invoice in
@@ -82,7 +82,10 @@ final class InvoiceManager {
      */
     fileprivate func idForNewInvoice() -> Int {
         
-        if let maxID = DatabaseManager.sharedInstance.dataStack.queryValue(From(Invoice.self), Select<Int>(.maximum(#keyPath(Invoice.id)))) {
+        if let maxID = try? DatabaseManager.sharedInstance.dataStack.queryValue(
+            From<Invoice>(),
+            Select<Invoice, Int>(.maximum(\.id))
+        ) {
             if (maxID == 0) {
                 return maxID
             } else {

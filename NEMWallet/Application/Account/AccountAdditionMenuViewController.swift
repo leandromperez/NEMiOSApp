@@ -39,9 +39,9 @@ final class AccountAdditionMenuViewController: UIViewController {
         title = "ADD_ACCOUNT".localized()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        createNewAccountButton.setTitle("CREATE_NEW".localized(), for: UIControlState())
-        addExistingAccountViaQRCodeButton.setTitle("SCAN_QR_CODE".localized(), for: UIControlState())
-        addExistingAccountViaPrivateKeyButton.setTitle("IMPORT_KEY".localized(), for: UIControlState())
+        createNewAccountButton.setTitle("CREATE_NEW".localized(), for: UIControl.State())
+        addExistingAccountViaQRCodeButton.setTitle("SCAN_QR_CODE".localized(), for: UIControl.State())
+        addExistingAccountViaPrivateKeyButton.setTitle("IMPORT_KEY".localized(), for: UIControl.State())
         
         createNewAccountButton.layer.cornerRadius = 5
         addExistingAccountViaQRCodeButton.layer.cornerRadius = 5

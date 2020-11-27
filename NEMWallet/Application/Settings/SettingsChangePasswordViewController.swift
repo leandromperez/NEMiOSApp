@@ -58,11 +58,11 @@ final class SettingsChangePasswordViewController: UITableViewController {
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -89,7 +89,7 @@ final class SettingsChangePasswordViewController: UITableViewController {
             showAlert(withMessage: "FIELDS_EMPTY_ERROR".localized())
             return
         }
-        guard newPasswordTextField.text!.characters.count >= 6 else {
+        guard newPasswordTextField.text!.count >= 6 else {
             showAlert(withMessage: "PASSOWORD_LENGTH_ERROR".localized())
             confirmNewPasswordTextField.text = ""
             return
@@ -142,7 +142,7 @@ final class SettingsChangePasswordViewController: UITableViewController {
             confirmNewPasswordTextField.textColor = UIColor.red
         }
         
-        if newPasswordTextField.text!.characters.count >= 6 {
+        if newPasswordTextField.text!.count >= 6 {
             newPasswordTextField.textColor = UIColor.green
         } else {
             confirmNewPasswordTextField.textColor = UIColor.red

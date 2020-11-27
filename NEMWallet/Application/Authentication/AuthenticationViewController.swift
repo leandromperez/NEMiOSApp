@@ -165,7 +165,7 @@ final class AuthenticationViewController: UIViewController {
         
         passwordHeadingLabel.text = "ENTET_PASSWORD".localized()
         passwordTextField.placeholder = "PASSWORD_PLACEHOLDER".localized()
-        confirmationButton.setTitle("CONFIRM".localized(), for: UIControlState())
+        confirmationButton.setTitle("CONFIRM".localized(), for: UIControl.State())
         
         containerView.layer.cornerRadius = 5
         containerView.clipsToBounds = true

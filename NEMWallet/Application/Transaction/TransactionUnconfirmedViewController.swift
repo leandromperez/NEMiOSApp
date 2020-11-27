@@ -61,11 +61,11 @@ final class TransactionUnconfirmedViewController: UIViewController {
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -90,7 +90,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var unconfirmedTransactions = [Transaction]()
                     
                     for (_, subJson) in json["data"] {
@@ -174,7 +174,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
      
         - Parameter index: The index of the transaction in the unconfirmed transactions array for which more details should get shown.
      */
-    open func showChanges(forTransactionAtIndex index: Int) {
+    public func showChanges(forTransactionAtIndex index: Int) {
         
         let multisigAggregateModificationTransaction = (unconfirmedTransactions[index] as! MultisigTransaction).innerTransaction as! MultisigAggregateModificationTransaction
         
@@ -196,7 +196,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
             }
         }
         
-        let changesAlert = UIAlertController(title: "INFO".localized(), message: modificationsDescription, preferredStyle: UIAlertControllerStyle.alert)
+        let changesAlert = UIAlertController(title: "INFO".localized(), message: modificationsDescription, preferredStyle: UIAlertController.Style.alert)
         
         let confirmAction = UIAlertAction(title: "OK".localized(), style: .default, handler: nil)
         changesAlert.addAction(confirmAction)
@@ -210,7 +210,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
      
         - Parameter index: The index of the transaction that should get signed.
      */
-    open func confirmTransaction(atIndex index: Int) {
+    public func confirmTransaction(atIndex index: Int) {
         
         let multisigTransaction = unconfirmedTransactions[index] as! MultisigTransaction
 
@@ -268,14 +268,14 @@ final class TransactionUnconfirmedViewController: UIViewController {
                 
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
-                    let responseJSON = JSON(data: response.data)
+                    let responseJSON = try JSON(data: response.data)
                     try self?.validateAnnounceTransactionResult(responseJSON)
                     
                     DispatchQueue.main.async {
                         
-                        let alert = UIAlertController(title: "INFO".localized(), message: "TRANSACTION_ANOUNCE_SUCCESS".localized(), preferredStyle: UIAlertControllerStyle.alert)
+                        let alert = UIAlertController(title: "INFO".localized(), message: "TRANSACTION_ANOUNCE_SUCCESS".localized(), preferredStyle: UIAlertController.Style.alert)
                         
-                        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
                             alert.dismiss(animated: true, completion: nil)
                             
                             if self?.unconfirmedTransactions.count == 1 {
@@ -402,7 +402,7 @@ extension TransactionUnconfirmedViewController: UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
 }
 

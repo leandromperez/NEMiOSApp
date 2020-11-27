@@ -86,9 +86,9 @@ final class AddressBookViewController: UIViewController, UITextFieldDelegate {
         
         tabBarController?.title = "ADDRESS_BOOK".localized()
         searchTextField.placeholder = "SEARCH_CONTACTS".localized()
-        addContactButton.setTitle("ADD_CONTACT".localized(), for: UIControlState())
-        addContactButton.setImage(#imageLiteral(resourceName: "Add").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControlState())
-        addContactButton.imageView!.contentMode = UIViewContentMode.scaleAspectFit
+        addContactButton.setTitle("ADD_CONTACT".localized(), for: UIControl.State())
+        addContactButton.setImage(#imageLiteral(resourceName: "Add").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControl.State())
+        addContactButton.imageView!.contentMode = UIView.ContentMode.scaleAspectFit
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
@@ -117,11 +117,11 @@ final class AddressBookViewController: UIViewController, UITextFieldDelegate {
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, andTitle title: String? = "INFO".localized(), completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, andTitle title: String? = "INFO".localized(), completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -304,7 +304,7 @@ extension AddressBookViewController: UITableViewDataSource, UITableViewDelegate 
         tableView.setEditing(editing, animated: animated)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         switch editingStyle {
         case .delete:
@@ -340,14 +340,14 @@ extension AddressBookViewController: UITableViewDataSource, UITableViewDelegate 
                 accountAddress = emailAddress.value as String
             }
             
-            let alert = UIAlertController(title: "\(contact.givenName) \(contact.familyName)", message: accountAddress.nemAddressNormalised(), preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "\(contact.givenName) \(contact.familyName)", message: accountAddress.nemAddressNormalised(), preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: "SEND_MESSAGE".localized(), style: UIAlertActionStyle.default, handler: { [unowned self] (action) in
+            alert.addAction(UIAlertAction(title: "SEND_MESSAGE".localized(), style: UIAlertAction.Style.default, handler: { [unowned self] (action) in
                 
                 self.performSegue(withIdentifier: "showTransactionSendViewController", sender: accountAddress)
             }))
             
-            alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.cancel, handler: { [unowned self] (action) -> Void in
+            alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: { [unowned self] (action) -> Void in
                 
                 alert.dismiss(animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: true)

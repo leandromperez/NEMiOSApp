@@ -39,14 +39,14 @@ final class InvoiceScannerViewController: UIViewController {
         
         qrCodeScannerView.session = session
         
-        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
         case .authorized:
             break
             
         case .notDetermined:
 
             sessionQueue.suspend()
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { [unowned self] granted in
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { [unowned self] granted in
                 if !granted {
                     self.setupResult = .notAuthorized
                 }
@@ -80,7 +80,7 @@ final class InvoiceScannerViewController: UIViewController {
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .default, handler: { _ in
                         if #available(iOS 10.0, *) {
-                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                         }
                     }))
                     
@@ -142,7 +142,7 @@ final class InvoiceScannerViewController: UIViewController {
         // Add video input.
         do {
             var defaultVideoDevice: AVCaptureDevice?
-            defaultVideoDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+            defaultVideoDevice = AVCaptureDevice.default(for: .video)
             let videoDeviceInput = try AVCaptureDeviceInput(device: defaultVideoDevice!)
             
             if session.canAddInput(videoDeviceInput) {
@@ -152,7 +152,7 @@ final class InvoiceScannerViewController: UIViewController {
                 DispatchQueue.main.async {
                     let initialVideoOrientation: AVCaptureVideoOrientation = .portrait
                     self.qrCodeScannerView.videoPreviewLayer.connection?.videoOrientation = initialVideoOrientation
-                    self.qrCodeScannerView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                    self.qrCodeScannerView.videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
                 }
             } else {
                 print("Could not add video device input to the session")
@@ -171,7 +171,7 @@ final class InvoiceScannerViewController: UIViewController {
         if session.canAddOutput(metaDataOutput) {
             session.addOutput(metaDataOutput)
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            metaDataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+            metaDataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         } else {
             print("Could not add photo output to the session")
             setupResult = .configurationFailed
@@ -190,7 +190,7 @@ final class InvoiceScannerViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func sessionRuntimeError(notification: NSNotification) {
+    @objc func sessionRuntimeError(notification: NSNotification) {
         
         guard let errorValue = notification.userInfo?[AVCaptureSessionErrorKey] as? NSError else {
             return
@@ -263,15 +263,14 @@ extension InvoiceScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         for item in metadataObjects {
-            if let metadataObject = item as? AVMetadataMachineReadableCodeObject , metadataObject.type == AVMetadataObjectTypeQRCode {
+            if let metadataObject = item as? AVMetadataMachineReadableCodeObject , metadataObject.type == AVMetadataObject.ObjectType.qr {
                 
-                guard let encodedCaptureResult = metadataObject.stringValue.data(using: String.Encoding.utf8) else {
+                guard let encodedCaptureResult = metadataObject.stringValue?.data(using: String.Encoding.utf8) else {
                     return
                 }
                 
-                let captureResultJSON = JSON(data: encodedCaptureResult)
-                
                 do {
+                    let captureResultJSON = try JSON(data: encodedCaptureResult)
                     let _ = try validate(captureResult: captureResultJSON)
                     
                     switch captureResultJSON[QRKeys.dataType.rawValue].intValue {
@@ -311,8 +310,8 @@ extension InvoiceScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func failedDetectingQRCode(withError errorMessage: String) {
         
-        let qrCodeDetectionFailureAlert: UIAlertController = UIAlertController(title: "INFO".localized(), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        qrCodeDetectionFailureAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: nil))
+        let qrCodeDetectionFailureAlert: UIAlertController = UIAlertController(title: "INFO".localized(), message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+        qrCodeDetectionFailureAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: nil))
         
         DispatchQueue.main.async {
             self.present(qrCodeDetectionFailureAlert, animated: true, completion: nil)

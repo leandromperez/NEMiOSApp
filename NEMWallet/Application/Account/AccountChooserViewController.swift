@@ -63,6 +63,6 @@ extension AccountChooserViewController: UITableViewDataSource, UITableViewDelega
         delegate?.didChooseAccount(accounts![indexPath.row])
         
         view.removeFromSuperview()
-        removeFromParentViewController()
+        removeFromParent()
     }
 }

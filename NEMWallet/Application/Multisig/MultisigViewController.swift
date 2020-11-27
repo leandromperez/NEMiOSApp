@@ -73,7 +73,7 @@ final class MultisigViewController: UIViewController {
     fileprivate func updateViewControllerAppearance() {
         
         title = "MULTISIG".localized()
-        multisigAccountChooserButton.setImage(#imageLiteral(resourceName: "DropDown").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControlState())
+        multisigAccountChooserButton.setImage(#imageLiteral(resourceName: "DropDown").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControl.State())
         
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
@@ -86,7 +86,7 @@ final class MultisigViewController: UIViewController {
     fileprivate func updateInfoHeaderLabel(withAccountData accountData: AccountData?) {
         
         guard accountData != nil else {
-            infoHeaderLabel.attributedText = NSMutableAttributedString(string: "LOST_CONNECTION".localized(), attributes: [NSForegroundColorAttributeName : UIColor.red])
+            infoHeaderLabel.attributedText = NSMutableAttributedString(string: "LOST_CONNECTION".localized(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.red])
             return
         }
         
@@ -117,11 +117,11 @@ final class MultisigViewController: UIViewController {
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -161,7 +161,7 @@ final class MultisigViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     let accountData = try json.mapObject(AccountData.self)
                     
                     DispatchQueue.main.async {
@@ -224,7 +224,7 @@ final class MultisigViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     let accountData = try json.mapObject(AccountData.self)
                     
                     DispatchQueue.main.async {
@@ -284,7 +284,7 @@ final class MultisigViewController: UIViewController {
                 
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
-                    let responseJSON = JSON(data: response.data)
+                    let responseJSON = try JSON(data: response.data)
 
                     try self?.validateAnnounceTransactionResult(responseJSON)
                     
@@ -394,7 +394,7 @@ final class MultisigViewController: UIViewController {
         } else {
             
             accountChooserViewController!.view.removeFromSuperview()
-            accountChooserViewController!.removeFromParentViewController()
+            accountChooserViewController!.removeFromParent()
             accountChooserViewController = nil
         }
     }
@@ -452,7 +452,7 @@ final class MultisigViewController: UIViewController {
         
         let transactionVersion = 2
         let transactionTimeStamp = Int(TimeManager.sharedInstance.currentNetworkTime)
-        var transactionFee = 0.5
+        let transactionFee = 0.5
         let transactionRelativeChange = relativeChange
         let transactionDeadline = Int(TimeManager.sharedInstance.currentNetworkTime + Constants.transactionDeadline)
                 
@@ -650,7 +650,7 @@ extension MultisigViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         switch editingStyle {
         case .delete:
@@ -724,7 +724,7 @@ extension MultisigViewController: AccountChooserDelegate {
         activeAccountData = accountData
         
         accountChooserViewController?.view.removeFromSuperview()
-        accountChooserViewController?.removeFromParentViewController()
+        accountChooserViewController?.removeFromParent()
         accountChooserViewController = nil
         
         fetchAccountData(forAccount: accountData)

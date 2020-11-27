@@ -67,8 +67,8 @@ final class TransactionUnconfirmedTableViewCell: UITableViewCell {
         
         senderHeadingLabel.text = "\("FROM".localized()):"
         recipientHeadingLabel.text = "\("TO".localized()):"
-        confirmationButton.setTitle("CONFIRM".localized(), for: UIControlState())
-        showChangesButton?.setTitle("SHOW_CHANGES".localized(), for: UIControlState())
+        confirmationButton.setTitle("CONFIRM".localized(), for: UIControl.State())
+        showChangesButton?.setTitle("SHOW_CHANGES".localized(), for: UIControl.State())
         
         senderValueLabel.text = ""
         recipientValueLabel.text = ""

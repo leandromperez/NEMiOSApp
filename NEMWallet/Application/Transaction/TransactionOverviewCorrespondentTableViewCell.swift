@@ -112,7 +112,7 @@ final class TransactionOverviewCorrespondentTableViewCell: UITableViewCell {
             textColor = UIColor(red: 65.0/255.0, green: 206.0/255.0, blue: 123.0/255.0, alpha: 1)
         }
         
-        amountAttributedString = NSMutableAttributedString(string: "\(sign)\((amount / 1000000).format()) XEM", attributes: [NSForegroundColorAttributeName: textColor])
+        amountAttributedString = NSMutableAttributedString(string: "\(sign)\((amount / 1000000).format()) XEM", attributes: [NSAttributedString.Key.foregroundColor: textColor])
         
         return amountAttributedString
     }

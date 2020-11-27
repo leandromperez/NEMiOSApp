@@ -27,7 +27,7 @@ final class MultisigSaveChangesTableViewCell: UITableViewCell {
     /// Updates the appearance of the table view cell.
     fileprivate func updateCellAppearance() {
         
-        saveButton.setTitle("SAVE_CHANGES".localized(), for: UIControlState())
+        saveButton.setTitle("SAVE_CHANGES".localized(), for: UIControl.State())
         
         preservesSuperviewLayoutMargins = false
         separatorInset = UIEdgeInsets.zero

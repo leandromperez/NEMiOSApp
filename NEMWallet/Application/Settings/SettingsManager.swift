@@ -75,7 +75,7 @@ final class SettingsManager {
      
         - Returns: The current authentication salt of the application.
      */
-    open func authenticationSalt() -> String? {
+    public func authenticationSalt() -> String? {
         
         let authenticationSalt = keychain.get("authenticationSalt")
         
@@ -87,7 +87,7 @@ final class SettingsManager {
      
         - Parameter setupDone: Bool whether the setup was completed successfully or not.
      */
-    open func setSetupStatus(setupDone: Bool) {
+    public func setSetupStatus(setupDone: Bool) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(setupDone, forKey: "setupStatus")
@@ -98,7 +98,7 @@ final class SettingsManager {
      
         - Parameter createdDefaultServers: Bool whether the default server were created successfully or not.
      */
-    open func setDefaultServerStatus(createdDefaultServers: Bool) {
+    public func setDefaultServerStatus(createdDefaultServers: Bool) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(createdDefaultServers, forKey: "defaultServerStatus")
@@ -109,7 +109,7 @@ final class SettingsManager {
      
         - Returns: Bool indicating whether the default server were already successfully created or not.
      */
-    open func defaultServerStatus() -> Bool {
+    public func defaultServerStatus() -> Bool {
         
         let userDefaults = UserDefaults.standard
         let defaultServerStatus = userDefaults.bool(forKey: "defaultServerStatus")
@@ -122,7 +122,7 @@ final class SettingsManager {
      
         - Parameter applicationPassword: The authentication password that should get set for the application.
      */
-    open func setApplicationPassword(applicationPassword: String) {
+    public func setApplicationPassword(applicationPassword: String) {
         
         let salt = authenticationSalt()
         let saltData = salt != nil ? NSData(bytes: salt!.asByteArray(), length: salt!.asByteArray().count) : NSData().generateRandomIV(32) as NSData
@@ -139,7 +139,7 @@ final class SettingsManager {
      
         - Returns: The current authentication password of the application.
      */
-    open func applicationPassword() -> String {
+    public func applicationPassword() -> String {
         
         let applicationPassword = keychain.get("applicationPassword") ?? String()
         
@@ -151,7 +151,7 @@ final class SettingsManager {
      
         - Parameter authenticationSalt: The authentication salt that should get set for the application.
      */
-    open func setAuthenticationSalt(authenticationSalt: String) {
+    public func setAuthenticationSalt(authenticationSalt: String) {
         
         keychain.set(authenticationSalt, forKey: "authenticationSalt")
     }
@@ -161,7 +161,7 @@ final class SettingsManager {
      
         - Parameter invoiceMessagePrefix: The invoice message prefix which should get set for the application.
      */
-    open func setInvoiceMessagePrefix(invoiceMessagePrefix: String) {
+    public func setInvoiceMessagePrefix(invoiceMessagePrefix: String) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(invoiceMessagePrefix, forKey: "invoiceMessagePrefix")
@@ -172,7 +172,7 @@ final class SettingsManager {
      
         - Returns: The invoice message prefix as a string.
      */
-    open func invoiceMessagePrefix() -> String {
+    public func invoiceMessagePrefix() -> String {
         
         let userDefaults = UserDefaults.standard
         let invoiceMessagePrefix = userDefaults.object(forKey: "invoiceMessagePrefix") as? String ?? String()
@@ -185,7 +185,7 @@ final class SettingsManager {
      
         - Parameter invoiceMessagePostfix: The invoice message postfix which should get set for the application.
      */
-    open func setInvoiceMessagePostfix(invoiceMessagePostfix: String) {
+    public func setInvoiceMessagePostfix(invoiceMessagePostfix: String) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(invoiceMessagePostfix, forKey: "invoiceMessagePostfix")
@@ -196,7 +196,7 @@ final class SettingsManager {
      
         - Returns: The invoice message postfix as a string.
      */
-    open func invoiceMessagePostfix() -> String {
+    public func invoiceMessagePostfix() -> String {
         
         let userDefaults = UserDefaults.standard
         let invoiceMessagePostfix = userDefaults.object(forKey: "invoiceMessagePostfix") as? String ?? String()
@@ -209,7 +209,7 @@ final class SettingsManager {
      
         - Parameter invoiceDefaultMessage: The invoice default message which should get set for the application.
      */
-    open func setInvoiceDefaultMessage(invoiceDefaultMessage: String) {
+    public func setInvoiceDefaultMessage(invoiceDefaultMessage: String) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(invoiceDefaultMessage, forKey: "invoiceDefaultMessage")
@@ -220,7 +220,7 @@ final class SettingsManager {
      
         - Returns: The invoice default message as a string.
      */
-    open func invoiceDefaultMessage() -> String {
+    public func invoiceDefaultMessage() -> String {
         
         let userDefaults = UserDefaults.standard
         let invoiceDefaultMessage = userDefaults.object(forKey: "invoiceDefaultMessage") as? String ?? String()
@@ -233,7 +233,7 @@ final class SettingsManager {
      
         - Parameter authenticationTouchIDStatus: The status of the authentication touch id setting that should get set.
      */
-    open func setAuthenticationTouchIDStatus(authenticationTouchIDStatus: Bool) {
+    public func setAuthenticationTouchIDStatus(authenticationTouchIDStatus: Bool) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(authenticationTouchIDStatus, forKey: "authenticationTouchIDStatus")
@@ -244,9 +244,9 @@ final class SettingsManager {
      
         - Returns: An array of servers.
      */
-    open func servers() -> [Server] {
+    public func servers() throws -> [Server] {
         
-        let servers = DatabaseManager.sharedInstance.dataStack.fetchAll(From(Server.self)) ?? []
+        let servers = try DatabaseManager.sharedInstance.dataStack.fetchAll(From(Server.self))
         
         return servers
     }
@@ -260,7 +260,7 @@ final class SettingsManager {
      
         - Returns: The result of the operation - success or failure.
      */
-    open func create(server address: String, withProtocolType protocolType: String, andPort port: String, completion: @escaping (_ result: Result) -> Void) {
+    public func create(server address: String, withProtocolType protocolType: String, andPort port: String, completion: @escaping (_ result: Result) -> Void) {
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Void in
@@ -285,7 +285,7 @@ final class SettingsManager {
      
         - Returns: The result of the operation - success or failure.
      */
-    open func createDefaultServers(completion: @escaping (_ result: Result) -> Void) {
+    public func createDefaultServers(completion: @escaping (_ result: Result) -> Void) {
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Void in
@@ -304,8 +304,8 @@ final class SettingsManager {
                 }
             },
             success: {
-                
-                self.setActiveServer(server: self.servers().first!)
+                //TODO: lmp error handling
+                self.setActiveServer(server: try! self.servers().first!) //I added try! because first! was already IUO
                 self.setDefaultServerStatus(createdDefaultServers: true)
                 return completion(.success)
             },
@@ -320,10 +320,12 @@ final class SettingsManager {
      
         - Parameter server: The server object that should get deleted.
      */
-    open func delete(server: Server) {
+    public func delete(server: Server) {
         
         if server == activeServer() {
-            var servers = self.servers()
+            
+            //TODO: lmp error handling
+            var servers = (try? self.servers()) ?? []
             
             for (index, serverObj) in servers.enumerated() where server.address == serverObj.address {
                 servers.remove(at: index)
@@ -349,7 +351,7 @@ final class SettingsManager {
         - Parameter address: The new address for the server that should get updated.
         - Parameter port: The new port for the server that should get updated.
      */
-    open func updateProperties(forServer server: Server, withNewProtocolType protocolType: String, andNewAddress address: String, andNewPort port: String, completion: @escaping (_ result: Result) -> Void) {
+    public func updateProperties(forServer server: Server, withNewProtocolType protocolType: String, andNewAddress address: String, andNewPort port: String, completion: @escaping (_ result: Result) -> Void) {
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Void in
@@ -383,9 +385,9 @@ final class SettingsManager {
      
         - Returns: A bool indicating that no server with the provided address was added to the application.
      */
-    open func validateServerExistence(forServerWithAddress serverAddress: String) throws -> Bool {
+    public func validateServerExistence(forServerWithAddress serverAddress: String) throws -> Bool {
         
-        let servers = self.servers()
+        let servers = try self.servers()
         
         for server in servers where server.address == serverAddress {
             throw ServerAdditionValidation.serverAlreadyPresent(serverAddress: server.address)
@@ -399,7 +401,7 @@ final class SettingsManager {
      
         - Parameter server: The server which should get set as the currently active server.
      */
-    open func setActiveServer(server: Server) {
+    public func setActiveServer(server: Server) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(server.address, forKey: "activeServer")
@@ -410,7 +412,7 @@ final class SettingsManager {
      
         - Parameter serverAddress: The address of the server which should get set as the currently active server.
      */
-    open func setActiveServer(serverAddress: String) {
+    public func setActiveServer(serverAddress: String) {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(serverAddress, forKey: "activeServer")
@@ -421,13 +423,15 @@ final class SettingsManager {
      
         - Returns: The currently active server.
      */
-    open func activeServer() -> Server {
+    public func activeServer() -> Server {
         
         var activeServer: Server?
         let userDefaults = UserDefaults.standard
         let activeServerIdentifier = userDefaults.string(forKey: "activeServer")!
         
-        for server in servers() where server.address == activeServerIdentifier {
+        //TODO: lmp error handling
+        //It looks like servers() must always return a valid list. I added try! because activeServer! is bellow (forcing the unwrapp)
+        for server in try! servers() where server.address == activeServerIdentifier {
             activeServer = server
         }
         

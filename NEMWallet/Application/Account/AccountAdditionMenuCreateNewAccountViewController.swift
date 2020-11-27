@@ -39,7 +39,7 @@ final class AccountAdditionMenuCreateNewAccountViewController: UIViewController 
     fileprivate func updateViewControllerAppearance() {
         
         title = "CREATE_NEW_ACCCOUNT".localized()
-        createAccountButton.setTitle("CREATE_NEW_ACCCOUNT".localized(), for: UIControlState())
+        createAccountButton.setTitle("CREATE_NEW_ACCCOUNT".localized(), for: UIControl.State())
         accountTitleTextField.placeholder = "ACCOUNT_NAME_PLACEHOLDER".localized()
         
         contentView.layer.cornerRadius = 10
@@ -49,8 +49,8 @@ final class AccountAdditionMenuCreateNewAccountViewController: UIViewController 
     /// Adds all needed keyboard observers to the view controller.
     fileprivate func addKeyboardObserver() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuCreateNewAccountViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuCreateNewAccountViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuCreateNewAccountViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuCreateNewAccountViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     /**
@@ -71,9 +71,9 @@ final class AccountAdditionMenuCreateNewAccountViewController: UIViewController 
                 switch result {
                 case .success:
                     
-                    let alert = UIAlertController(title: "Warning", message: "The account was successfully created. Don't forget to backup your private key! Select your account on the dashboard, go to 'more' -> 'export account'", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "Warning", message: "The account was successfully created. Don't forget to backup your private key! Select your account on the dashboard, go to 'more' -> 'export account'", preferredStyle: UIAlertController.Style.alert)
                     
-                    alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { [unowned self] (action) -> Void in
+                    alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { [unowned self] (action) -> Void in
                         self.performSegue(withIdentifier: "unwindToWalletOverviewViewController", sender: nil)
                     }))
                     
@@ -119,19 +119,19 @@ final class AccountAdditionMenuCreateNewAccountViewController: UIViewController 
     }
     
     /// Makes the scroll view scrollable as soon as the keyboard shows.
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         let info: NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
-        let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         var keyboardHeight:CGFloat = keyboardSize.height
         keyboardHeight -= self.view.frame.height - self.scrollView.frame.height
         
-        scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight - 10, 0)
-        scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardHeight + 15, 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - 10, right: 0)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight + 15, right: 0)
     }
     
     /// Resets the scroll view as soon as the keyboard hides.
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }

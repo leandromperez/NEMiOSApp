@@ -37,7 +37,7 @@ final class TransactionManager {
     // MARK: - Manager Properties
     
     /// The singleton for the transaction manager.
-    open static let sharedInstance = TransactionManager()
+    public static let sharedInstance = TransactionManager()
 
     // MARK: - Public Manager Methods
     
@@ -51,7 +51,7 @@ final class TransactionManager {
      
         - Returns: The request announce object of the provided transaction that will get passed to the NIS to announce the transaction.
      */
-    open func signTransaction(_ transaction: Transaction, account: Account) -> RequestAnnounce {
+    public func signTransaction(_ transaction: Transaction, account: Account) -> RequestAnnounce {
         
         var transactionByteArray = [UInt8]()
         var transactionByteArrayHexadecimal = String()
@@ -134,7 +134,7 @@ final class TransactionManager {
      
         - Returns: The fee for the transaction as a double.
      */
-    open func calculateFee(forTransactionWithAmount transactionAmount: Double) -> Double {
+    public func calculateFee(forTransactionWithAmount transactionAmount: Double) -> Double {
         
         var transactionFee = 0.0
         
@@ -156,7 +156,7 @@ final class TransactionManager {
      
         - Returns: The fee for the transaction as a double.
      */
-    open func calculateFee(forTransactionWithMessage transactionMessageByteArray: [UInt8], isEncrypted: Bool = false) -> Double {
+    public func calculateFee(forTransactionWithMessage transactionMessageByteArray: [UInt8], isEncrypted: Bool = false) -> Double {
         
         var transactionFee = 0.0
         
@@ -177,7 +177,7 @@ final class TransactionManager {
      
         - Returns: The encrypted message as a byte array.
      */
-    open func encryptMessage(_ messageByteArray: [UInt8], senderEncryptedPrivateKey: String, recipientPublicKey: String) -> Array<UInt8> {
+    public func encryptMessage(_ messageByteArray: [UInt8], senderEncryptedPrivateKey: String, recipientPublicKey: String) -> Array<UInt8> {
         
         let senderPrivateKey = AccountManager.sharedInstance.decryptPrivateKey(encryptedPrivateKey: senderEncryptedPrivateKey)
         
@@ -213,7 +213,7 @@ final class TransactionManager {
      
         - Returns: The decrypted message as a string or nil if the message was empty.
      */
-    open func decryptMessage(_ encryptedMessageByteArray: Array<UInt8>, recipientEncryptedPrivateKey: String, senderPublicKey: String) -> String? {
+    public func decryptMessage(_ encryptedMessageByteArray: Array<UInt8>, recipientEncryptedPrivateKey: String, senderPublicKey: String) -> String? {
         
         let recipientPrivateKey = AccountManager.sharedInstance.decryptPrivateKey(encryptedPrivateKey: recipientEncryptedPrivateKey)
         
@@ -234,7 +234,7 @@ final class TransactionManager {
             return nil
         }
         
-        return NSString(data: messageData! as Data, encoding: String.Encoding.utf8.rawValue) as? String
+        return NSString(data: messageData! as Data, encoding: String.Encoding.utf8.rawValue) as String?
     }
 
     /**
@@ -245,7 +245,7 @@ final class TransactionManager {
      
         - Returns: A bool indicating whether the validation was successful or not.
      */
-    open func validateHexadecimalString(_ hexadecimalString: String) -> Bool {
+    public func validateHexadecimalString(_ hexadecimalString: String) -> Bool {
         
         let regex: NSRegularExpression?
         do {
@@ -254,9 +254,9 @@ final class TransactionManager {
             regex = nil
         }
         
-        let textCheckingResult = regex?.firstMatch(in: hexadecimalString, options: [], range: NSMakeRange(0, hexadecimalString.characters.count))
+        let textCheckingResult = regex?.firstMatch(in: hexadecimalString, options: [], range: NSMakeRange(0, hexadecimalString.count))
         
-        if textCheckingResult == nil || textCheckingResult?.range.location == NSNotFound || hexadecimalString.characters.count % 2 != 0 {
+        if textCheckingResult == nil || textCheckingResult?.range.location == NSNotFound || hexadecimalString.count % 2 != 0 {
             return false
         }
         
@@ -271,7 +271,7 @@ final class TransactionManager {
      
         - Returns: A bool indicating whether the validation was successful or not.
      */
-    open func validateAccountAddress(_ accountAddress: String) -> Bool {
+    public func validateAccountAddress(_ accountAddress: String) -> Bool {
 
         guard accountAddress.lengthOfBytes(using: String.Encoding.utf8) == 40 else { return false }
         

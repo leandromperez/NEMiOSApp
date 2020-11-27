@@ -133,8 +133,8 @@ final class TransactionMessageTableViewCell: DetailedTableViewCell {
             amount = "\n" + amount
         }
         
-        let messageAttributedString = NSMutableAttributedString(string: message!, attributes: [NSForegroundColorAttributeName: textColor, NSFontAttributeName: UIFont.systemFont(ofSize: 13, weight: UIFontWeightRegular)])
-        let amountAttributedString = NSMutableAttributedString(string: amount, attributes: [NSForegroundColorAttributeName: textColor,NSFontAttributeName: UIFont.systemFont(ofSize: 15, weight: UIFontWeightMedium)])
+        let messageAttributedString = NSMutableAttributedString(string: message!, attributes: [NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)])
+        let amountAttributedString = NSMutableAttributedString(string: amount, attributes: [NSAttributedString.Key.foregroundColor: textColor,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)])
         messageAttributedString.append(amountAttributedString)
         
         var date = String()
@@ -153,13 +153,13 @@ final class TransactionMessageTableViewCell: DetailedTableViewCell {
     fileprivate func updateCellAppearance() {
         
         transactionDateLabel.numberOfLines = 1
-        transactionDateLabel.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightRegular)
+        transactionDateLabel.font = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)
         
         transactionMessageTextView.isScrollEnabled = false
         transactionMessageTextView.layer.cornerRadius = 5
         transactionMessageTextView.clipsToBounds = true
         transactionMessageTextView.isEditable = false
-        transactionMessageTextView.textContainerInset = UIEdgeInsetsMake(8, 5, 8, 5)
+        transactionMessageTextView.textContainerInset = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
         
         infoTopLabel.numberOfLines = 1
         infoTopLabel.font = UIFont(name: "HelveticaNeue-Light", size: 10)
@@ -184,7 +184,7 @@ final class TransactionMessageTableViewCell: DetailedTableViewCell {
     }
     
     /// Updates the details labels with the provided details.
-    open func setDetails(_ topInformation: NSAttributedString?, centerInformation: NSAttributedString?, bottomInformation: NSAttributedString?) {
+    public func setDetails(_ topInformation: NSAttributedString?, centerInformation: NSAttributedString?, bottomInformation: NSAttributedString?) {
         infoTopLabel.attributedText = topInformation
         infoCenterLabel.attributedText = centerInformation
         infoBottomLabel.attributedText = bottomInformation

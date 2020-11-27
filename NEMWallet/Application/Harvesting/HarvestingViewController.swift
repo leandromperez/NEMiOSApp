@@ -110,7 +110,7 @@ final class HarvestingViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     
                     let harvestedBlocks = try json["data"].mapArray(Block.self)
                     
@@ -160,7 +160,7 @@ final class HarvestingViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     
                     let accountData = try json.mapObject(AccountData.self)
                     

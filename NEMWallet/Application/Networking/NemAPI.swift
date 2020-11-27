@@ -14,9 +14,9 @@ import Moya
     The application uses the dependency 'Moya' for all network requests.
     See the official [documentation](https://github.com/Moya/Moya) on how it works.
  */
-let NEMProvider = MoyaProvider<NEM>(endpointClosure: { (target: NEM) -> Endpoint<NEM> in
+let NEMProvider = MoyaProvider<NEM>(endpointClosure: { (target: NEM) -> Endpoint in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
-    let endpoint: Endpoint<NEM> = Endpoint<NEM>(url: url, sampleResponseClosure: { .networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
+    let endpoint: Endpoint = Endpoint(url: url, sampleResponseClosure: { .networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
     return endpoint
 })
 

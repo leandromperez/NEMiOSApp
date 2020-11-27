@@ -42,7 +42,7 @@ final class AutoCompleteTextField:UITextField {
     public var enableAttributedText = false
     
     /// User Defined Attributes
-    public var autoCompleteAttributes:[String:AnyObject]?
+    public var autoCompleteAttributes:[NSAttributedString.Key : AnyObject]?
     
     /// Hides autocomplete tableview after selecting a suggestion
     public var hidesWhenSelected = true
@@ -89,8 +89,10 @@ final class AutoCompleteTextField:UITextField {
 //    
     private func commonInit(){
         hidesWhenEmpty = true
-        autoCompleteAttributes = [NSForegroundColorAttributeName: UIColor.black]
-        autoCompleteAttributes![NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12)
+        autoCompleteAttributes = [
+            .foregroundColor: UIColor.black,
+            .font : UIFont.boldSystemFont(ofSize: 12)
+        ]
         self.clearButtonMode = .always
         self.addTarget(self, action: #selector(AutoCompleteTextField.textFieldDidChange), for: .editingChanged)
         self.addTarget(self, action: #selector(AutoCompleteTextField.textFieldDidEndEditing), for: .editingDidEnd)
@@ -124,7 +126,10 @@ final class AutoCompleteTextField:UITextField {
     private func reload(){
         
         if enableAttributedText{
-            let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:autoCompleteTextFont] as [String : Any]
+            let attrs : [NSAttributedString.Key : Any] = [
+                .foregroundColor : autoCompleteTextColor,
+                .font : autoCompleteTextFont
+            ]
     
             if attributedAutoCompleteStrings.count > 0 {
                 attributedAutoCompleteStrings.removeAll(keepingCapacity: false)
@@ -151,7 +156,7 @@ final class AutoCompleteTextField:UITextField {
         autoCompleteTableView?.reloadData()
     }
     
-    func textFieldDidChange(){
+    @objc func textFieldDidChange(){
         guard let _ = text else {
             return
         }
@@ -164,7 +169,7 @@ final class AutoCompleteTextField:UITextField {
         })
     }
     
-    func textFieldDidEndEditing() {
+    @objc func textFieldDidEndEditing() {
         autoCompleteTableView?.isHidden = true
     }
 }

@@ -18,7 +18,7 @@ final class AddressBookManager {
     // MARK: - Manager Properties
 
     /// The singleton for the address book manager.
-    open static let sharedInstance = AddressBookManager()
+    public static let sharedInstance = AddressBookManager()
     
     /// The contact store used to work with the address book.
     fileprivate var contactStore = CNContactStore()
@@ -30,7 +30,7 @@ final class AddressBookManager {
      
         - Returns: All contacts of the address book.
      */
-    open func contacts(_ completion: @escaping (_ contacts: [CNContact]) -> Void) {
+    public func contacts(_ completion: @escaping (_ contacts: [CNContact]) -> Void) {
         
         var contacts = [CNContact]()
         
@@ -72,7 +72,7 @@ final class AddressBookManager {
      
         - Returns: The operation result.
      */
-    open func createContact(withFirstName firstName: String, andLastName lastName: String, andAccountAddress accountAddress: String, completion: @escaping (_ result: Result) -> Void) {
+    public func createContact(withFirstName firstName: String, andLastName lastName: String, andAccountAddress accountAddress: String, completion: @escaping (_ result: Result) -> Void) {
         
         DispatchQueue.global(qos: .userInitiated).async {
             
@@ -122,7 +122,7 @@ final class AddressBookManager {
         - Parameter lastName: The new last name of the contact that should get updated.
         - Parameter accountAddress: The new account address of the contact that should get updated.
      */
-    open func updateProperties(ofContact contact: CNContact, withNewFirstName firstName: String, andNewLastName lastName: String, andNewAccountAddress accountAddress: String, completion: @escaping (_ result: Result) -> Void) {
+    public func updateProperties(ofContact contact: CNContact, withNewFirstName firstName: String, andNewLastName lastName: String, andNewAccountAddress accountAddress: String, completion: @escaping (_ result: Result) -> Void) {
                 
         DispatchQueue.global(qos: .userInitiated).async {
             
@@ -191,7 +191,7 @@ final class AddressBookManager {
      
         - Parameter contact: The contact that should get deleted form the address book.
      */
-    open func deleteContact(contact: CNContact, completion: @escaping (_ result: Result) -> Void) {
+    public func deleteContact(contact: CNContact, completion: @escaping (_ result: Result) -> Void) {
         
         DispatchQueue.global(qos: .userInitiated).async {
             
@@ -234,7 +234,7 @@ final class AddressBookManager {
      
         - Returns: The account address as a string.
      */
-    open func fetchAccountAddress(fromContact contact: CNContact) -> String {
+    public func fetchAccountAddress(fromContact contact: CNContact) -> String {
         
         var contactAccountAddress = String()
         

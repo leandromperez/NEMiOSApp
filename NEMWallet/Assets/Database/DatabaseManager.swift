@@ -18,10 +18,10 @@ open class DatabaseManager: NSObject {
     // MARK: - Manager Properties
     
     /// The singleton for the database manager.
-    open static let sharedInstance = DatabaseManager()
+    public static let sharedInstance = DatabaseManager()
     
     /// The data stack that manages all available stores.
-    open let dataStack = DataStack(xcodeModelName: "NEMWallet")
+    public let dataStack = DataStack(xcodeModelName: "NEMWallet")
     
     // MARK: - Manager Lifecycle
     

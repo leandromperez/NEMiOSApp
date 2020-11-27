@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FBC1C652152DE35D87CBAD0 /* Pods_NEMWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5350A2457A1CAA303DA9997F /* Pods_NEMWalletTests.framework */; };
+		478267179A9E47A742AC8D7B /* Pods_NEMWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DB7564CDF4E2D03D130316 /* Pods_NEMWallet.framework */; };
 		4F0B5EF91DAFCA7200E182C3 /* NEMWallet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B5EF71DAFCA7200E182C3 /* NEMWallet.xcdatamodeld */; };
 		4F0B5EFB1DAFD34C00E182C3 /* SettingsServerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B5EFA1DAFD34C00E182C3 /* SettingsServerTableViewCell.swift */; };
 		4F0B5EFD1DAFD38500E182C3 /* DetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B5EFC1DAFD38500E182C3 /* DetailedTableViewCell.swift */; };
@@ -19,8 +21,6 @@
 		4F0B5F0C1DAFD4EB00E182C3 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B5F0B1DAFD4EB00E182C3 /* DatabaseManager.swift */; };
 		4F0B5F0E1DAFD50700E182C3 /* MultisigSignatureTransaction+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0B5F0D1DAFD50700E182C3 /* MultisigSignatureTransaction+Additions.swift */; };
 		4F136CAF1D9A750D0042504C /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F136CAE1D9A750D0042504C /* SettingsManager.swift */; };
-		4F15DCA41DA27B5C0042997C /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F15DCA31DA27B5C0042997C /* KeychainSwift.framework */; };
-		4F15DCA51DA27B5C0042997C /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F15DCA31DA27B5C0042997C /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F15DCA71DA294400042997C /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15DCA61DA294400042997C /* ServerModel.swift */; };
 		4F15DCA91DA2A9E20042997C /* SettingsOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15DCA81DA2A9E20042997C /* SettingsOptionTableViewCell.swift */; };
 		4F15DCAF1DA2B3E10042997C /* DefaultServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F15DCAE1DA2B3E10042997C /* DefaultServers.plist */; };
@@ -33,8 +33,6 @@
 		4F2C170A1D67323100FF1F51 /* MultisigTransaction+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C17091D67323100FF1F51 /* MultisigTransaction+Additions.swift */; };
 		4F3ACE921D61C2EE0056F234 /* Response+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACE911D61C2EE0056F234 /* Response+ObjectMapper.swift */; };
 		4F3ACE941D61C31C0056F234 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACE931D61C31C0056F234 /* AccountDataModel.swift */; };
-		4F3ACE961D61C6210056F234 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3ACE951D61C6210056F234 /* ObjectMapper.framework */; };
-		4F3ACE971D61C6210056F234 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3ACE951D61C6210056F234 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F3ACE991D620B100056F234 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACE981D620B100056F234 /* TransactionModel.swift */; };
 		4F3ACE9B1D620F680056F234 /* MultisigTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACE9A1D620F680056F234 /* MultisigTransactionModel.swift */; };
 		4F3ACE9D1D6214060056F234 /* TransferTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACE9C1D6214060056F234 /* TransferTransactionModel.swift */; };
@@ -47,12 +45,8 @@
 		4F3ACEAF1D6451580056F234 /* Message+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACEAE1D6451580056F234 /* Message+Additions.swift */; };
 		4F3ACEB11D64F1FA0056F234 /* TransactionMetaDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3ACEB01D64F1F90056F234 /* TransactionMetaDataModel.swift */; };
 		4F3B428C1D59CF100067E3D3 /* AccountAdditionMenuPasswordValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3B428B1D59CF100067E3D3 /* AccountAdditionMenuPasswordValidationViewController.swift */; };
-		4F45BF051D99E00E00E90618 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F45BF041D99E00E00E90618 /* ReactiveSwift.framework */; };
-		4F45BF061D99E00E00E90618 /* ReactiveSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F45BF041D99E00E00E90618 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F540AA21D85E72600CA5385 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F540AA11D85E72600CA5385 /* TimeManager.swift */; };
 		4F63E36A1D5E03D100BCFFA4 /* NemAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F63E3691D5E03D100BCFFA4 /* NemAPI.swift */; };
-		4F63E36D1D5E192500BCFFA4 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F63E36B1D5E18CF00BCFFA4 /* Result.framework */; };
-		4F63E36E1D5E192500BCFFA4 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F63E36B1D5E18CF00BCFFA4 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F675F331D50A00800F1BDD5 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F675F321D50A00800F1BDD5 /* AccountManager.swift */; };
 		4F76D0591F2657E000D9694D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9F67791D48EF4A0086F98F /* Quick.framework */; };
 		4F76D05A1F2657E000D9694D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9F67781D48EF4A0086F98F /* Nimble.framework */; };
@@ -78,18 +72,7 @@
 		4F86A09E1F0E8A3000132F8C /* TabBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F86A09D1F0E8A3000132F8C /* TabBar.xcassets */; };
 		4F86A0A01F0E8AC200132F8C /* Transaction.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F86A09F1F0E8AC200132F8C /* Transaction.xcassets */; };
 		4F86A0A21F0FB5A200132F8C /* QRModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F86A0A11F0FB5A200132F8C /* QRModel.swift */; };
-		4F98280F1D3CEFBE00A3C8B2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9828071D3CEB3400A3C8B2 /* Alamofire.framework */; };
-		4F9828101D3CEFBE00A3C8B2 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9828071D3CEB3400A3C8B2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F9828111D3CEFBE00A3C8B2 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9828081D3CEB3400A3C8B2 /* AlamofireNetworkActivityIndicator.framework */; };
-		4F9828121D3CEFBE00A3C8B2 /* AlamofireNetworkActivityIndicator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9828081D3CEB3400A3C8B2 /* AlamofireNetworkActivityIndicator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F9828131D3CEFBE00A3C8B2 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9828091D3CEB3400A3C8B2 /* CryptoSwift.framework */; };
-		4F9828141D3CEFBE00A3C8B2 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9828091D3CEB3400A3C8B2 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F9828151D3CEFBE00A3C8B2 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F98280A1D3CEB3500A3C8B2 /* SwiftyJSON.framework */; };
-		4F9828161D3CEFBE00A3C8B2 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F98280A1D3CEB3500A3C8B2 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9D544D1F62F21C00A80CBE /* CIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9D544C1F62F21C00A80CBE /* CIImage+Additions.swift */; };
-		4F9F67861D48F43D0086F98F /* CoreStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9F676C1D48EC6C0086F98F /* CoreStore.framework */; };
-		4F9F67871D48F43D0086F98F /* CoreStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9F676C1D48EC6C0086F98F /* CoreStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F9F67A91D48FE460086F98F /* Moya.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9F67691D48EB4A0086F98F /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9F67EA1D4C31080086F98F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F67E91D4C31080086F98F /* AppDelegate.swift */; };
 		4F9F67EE1D4C31140086F98F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F67ED1D4C31140086F98F /* NavigationController.swift */; };
 		4F9F67F01D4C311C0086F98F /* MoreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9F67EF1D4C311C0086F98F /* MoreMenuViewController.swift */; };
@@ -191,29 +174,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F9828171D3CEFBF00A3C8B2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				4F15DCA51DA27B5C0042997C /* KeychainSwift.framework in Embed Frameworks */,
-				4F9F67A91D48FE460086F98F /* Moya.framework in Embed Frameworks */,
-				4F3ACE971D61C6210056F234 /* ObjectMapper.framework in Embed Frameworks */,
-				4F9F67871D48F43D0086F98F /* CoreStore.framework in Embed Frameworks */,
-				4F9828161D3CEFBE00A3C8B2 /* SwiftyJSON.framework in Embed Frameworks */,
-				4F9828141D3CEFBE00A3C8B2 /* CryptoSwift.framework in Embed Frameworks */,
-				4F45BF061D99E00E00E90618 /* ReactiveSwift.framework in Embed Frameworks */,
-				4F63E36E1D5E192500BCFFA4 /* Result.framework in Embed Frameworks */,
-				4F9828101D3CEFBE00A3C8B2 /* Alamofire.framework in Embed Frameworks */,
-				4F9828121D3CEFBE00A3C8B2 /* AlamofireNetworkActivityIndicator.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D007EBF7338389418E77A27 /* Pods-NEMWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEMWalletTests.release.xcconfig"; path = "Target Support Files/Pods-NEMWalletTests/Pods-NEMWalletTests.release.xcconfig"; sourceTree = "<group>"; };
 		4F01CDAC1FC715D6003F192D /* NEMWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NEMWallet.entitlements; sourceTree = "<group>"; };
 		4F0B5EF81DAFCA7200E182C3 /* NEMWallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NEMWallet.xcdatamodel; sourceTree = "<group>"; };
 		4F0B5EFA1DAFD34C00E182C3 /* SettingsServerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsServerTableViewCell.swift; sourceTree = "<group>"; };
@@ -354,8 +318,11 @@
 		4FE02C121DA2E1180057740D /* ServerExceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerExceptions.swift; sourceTree = "<group>"; };
 		4FE70AAA1DA6D24300C62F1C /* UIApplication+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
 		4FFF8F001D51D7E600B4BB9F /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		5350A2457A1CAA303DA9997F /* Pods_NEMWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NEMWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		644160CA1EF8EA0B00534DB9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		64F22B8C1EE67B9700780900 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		6C9865B38C42BEE4A73728E3 /* Pods-NEMWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEMWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-NEMWalletTests/Pods-NEMWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7D783C95760ED73E7320D63A /* Pods-NEMWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEMWallet.release.xcconfig"; path = "Target Support Files/Pods-NEMWallet/Pods-NEMWallet.release.xcconfig"; sourceTree = "<group>"; };
 		98019A4E1CAC1E4400C61638 /* id-ID */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "id-ID"; path = "id-ID.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		98019A4F1CAC270E00C61638 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lt; path = lt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		98019A501CAC28CB00C61638 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -393,6 +360,8 @@
 		98F01CC41C2D6E5C0018081B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DA3558001A39D3B900AFA5FD /* NEMWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NEMWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADDA24C1B21D17800F3F5F5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F4DB7564CDF4E2D03D130316 /* Pods_NEMWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NEMWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F54EC1199470F70DA5D611BE /* Pods-NEMWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEMWallet.debug.xcconfig"; path = "Target Support Files/Pods-NEMWallet/Pods-NEMWallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +371,7 @@
 			files = (
 				4F76D0591F2657E000D9694D /* Quick.framework in Frameworks */,
 				4F76D05A1F2657E000D9694D /* Nimble.framework in Frameworks */,
+				2FBC1C652152DE35D87CBAD0 /* Pods_NEMWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,15 +379,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F3ACE961D61C6210056F234 /* ObjectMapper.framework in Frameworks */,
-				4F9F67861D48F43D0086F98F /* CoreStore.framework in Frameworks */,
-				4F63E36D1D5E192500BCFFA4 /* Result.framework in Frameworks */,
-				4F45BF051D99E00E00E90618 /* ReactiveSwift.framework in Frameworks */,
-				4F9828111D3CEFBE00A3C8B2 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
-				4F9828131D3CEFBE00A3C8B2 /* CryptoSwift.framework in Frameworks */,
-				4F15DCA41DA27B5C0042997C /* KeychainSwift.framework in Frameworks */,
-				4F9828151D3CEFBE00A3C8B2 /* SwiftyJSON.framework in Frameworks */,
-				4F98280F1D3CEFBE00A3C8B2 /* Alamofire.framework in Frameworks */,
+				478267179A9E47A742AC8D7B /* Pods_NEMWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +667,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		AD1A03EFEC22BBAD423C52EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F54EC1199470F70DA5D611BE /* Pods-NEMWallet.debug.xcconfig */,
+				7D783C95760ED73E7320D63A /* Pods-NEMWallet.release.xcconfig */,
+				6C9865B38C42BEE4A73728E3 /* Pods-NEMWalletTests.debug.xcconfig */,
+				0D007EBF7338389418E77A27 /* Pods-NEMWalletTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DA031ED71A9226E60021E98B /* Textfields */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +744,7 @@
 				4F76D0501F2657AD00D9694D /* NEMWalletTests */,
 				DA64A4D21A5A892D005833A4 /* Frameworks */,
 				DA3558011A39D3B900AFA5FD /* Products */,
+				AD1A03EFEC22BBAD423C52EB /* Pods */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 0;
@@ -895,6 +869,8 @@
 				4F9828081D3CEB3400A3C8B2 /* AlamofireNetworkActivityIndicator.framework */,
 				4F9828091D3CEB3400A3C8B2 /* CryptoSwift.framework */,
 				4F98280A1D3CEB3500A3C8B2 /* SwiftyJSON.framework */,
+				F4DB7564CDF4E2D03D130316 /* Pods_NEMWallet.framework */,
+				5350A2457A1CAA303DA9997F /* Pods_NEMWalletTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -906,6 +882,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F76D0561F2657AD00D9694D /* Build configuration list for PBXNativeTarget "NEMWalletTests" */;
 			buildPhases = (
+				3B26B1D87F6AF28B1F15C1F3 /* [CP] Check Pods Manifest.lock */,
 				4F76D04B1F2657AD00D9694D /* Sources */,
 				4F76D04C1F2657AD00D9694D /* Frameworks */,
 				4F76D04D1F2657AD00D9694D /* Resources */,
@@ -925,11 +902,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA3558221A39D3BC00AFA5FD /* Build configuration list for PBXNativeTarget "NEMWallet" */;
 			buildPhases = (
+				3D6670FB18D38E0DAB65932F /* [CP] Check Pods Manifest.lock */,
 				DA3557FC1A39D3B900AFA5FD /* Sources */,
 				DA3557FD1A39D3B900AFA5FD /* Frameworks */,
 				DA3557FE1A39D3B900AFA5FD /* Resources */,
-				4F9828171D3CEFBF00A3C8B2 /* Embed Frameworks */,
 				4F83E5B11DB0288D0098891F /* ShellScript */,
+				8BDD7A7A3ED46101A6C5A684 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -948,7 +926,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = NEM;
 				TargetAttributes = {
 					4F76D04E1F2657AD00D9694D = {
@@ -960,7 +938,7 @@
 					};
 					DA3557FF1A39D3B900AFA5FD = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = PNXDDDXH4F;
+						DevelopmentTeam = B3CLFTM242;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -981,7 +959,7 @@
 			};
 			buildConfigurationList = DA3557FB1A39D3B900AFA5FD /* Build configuration list for PBXProject "NEMWallet" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
@@ -1045,6 +1023,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3B26B1D87F6AF28B1F15C1F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NEMWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D6670FB18D38E0DAB65932F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NEMWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4F83E5B11DB0288D0098891F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1056,7 +1078,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
+		};
+		8BDD7A7A3ED46101A6C5A684 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NEMWallet/Pods-NEMWallet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NEMWallet/Pods-NEMWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1237,6 +1291,7 @@
 /* Begin XCBuildConfiguration section */
 		4F76D0571F2657AD00D9694D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C9865B38C42BEE4A73728E3 /* Pods-NEMWalletTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1246,24 +1301,22 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = PNXDDDXH4F;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = NEMWalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.nem.NEMWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NEMWallet.app/NEMWallet";
 			};
 			name = Debug;
 		};
 		4F76D0581F2657AD00D9694D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D007EBF7338389418E77A27 /* Pods-NEMWalletTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1273,16 +1326,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PNXDDDXH4F;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = NEMWalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.nem.NEMWalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NEMWallet.app/NEMWallet";
 			};
 			name = Release;
@@ -1298,14 +1348,23 @@
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1332,12 +1391,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_OWNER = dominik.l.p;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1352,14 +1412,23 @@
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1379,17 +1448,19 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_OWNER = dominik.l.p;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		DA3558231A39D3BC00AFA5FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F54EC1199470F70DA5D611BE /* Pods-NEMWallet.debug.xcconfig */;
 			buildSettings = {
 				ALTERNATE_OWNER = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1397,29 +1468,29 @@
 				CODE_SIGN_ENTITLEMENTS = "NEMWallet/Assets/Supporting Files/NEMWallet.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = PNXDDDXH4F;
+				DEVELOPMENT_TEAM = B3CLFTM242;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/NEMWallet/Assets/Property Lists/Info.plist";
 				INSTALL_OWNER = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.nem.Wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = io.nem.Wallet.lmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NEMWallet/Assets/Supporting Files/NemIOSClient-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DA3558241A39D3BC00AFA5FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D783C95760ED73E7320D63A /* Pods-NEMWallet.release.xcconfig */;
 			buildSettings = {
 				ALTERNATE_OWNER = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1427,23 +1498,22 @@
 				CODE_SIGN_ENTITLEMENTS = "NEMWallet/Assets/Supporting Files/NEMWallet.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = PNXDDDXH4F;
+				DEVELOPMENT_TEAM = B3CLFTM242;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/NEMWallet/Assets/Property Lists/Info.plist";
 				INSTALL_OWNER = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.nem.Wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = io.nem.Wallet.lmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NEMWallet/Assets/Supporting Files/NemIOSClient-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

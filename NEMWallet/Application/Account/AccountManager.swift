@@ -35,9 +35,8 @@ final class AccountManager {
         - Returns: An array of accounts ordered by the user defined position (ascending).
      */
     public func accounts() -> [Account] {
-        
-        let accounts = DatabaseManager.sharedInstance.dataStack.fetchAll(From(Account.self), OrderBy(.ascending("position"))) ?? []
-        return accounts
+        let accounts = try? DatabaseManager.sharedInstance.dataStack.fetchAll(From(Account.self), OrderBy<Account>(.ascending("position")))
+        return accounts ?? []
     }
     
     /**
@@ -285,7 +284,7 @@ final class AccountManager {
         
         SHA256_hash(&stepOneSHA256, &inBuffer, 32)
         
-        let stepOneSHA256Text = NSString(bytes: stepOneSHA256, length: stepOneSHA256.count, encoding: String.Encoding.utf8.rawValue) as! String
+        let stepOneSHA256Text = NSString(bytes: stepOneSHA256, length: stepOneSHA256.count, encoding: String.Encoding.utf8.rawValue)! as String
         let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
         let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
         
@@ -297,8 +296,8 @@ final class AccountManager {
         
         SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
         
-        let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue) as! String
-        var checksumBuffer = checksumText.asByteArray()
+        let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue)! as String
+        let checksumBuffer = checksumText.asByteArray()
         var checksum = Array<UInt8>()
         checksum.append(checksumBuffer[0])
         checksum.append(checksumBuffer[1])
@@ -364,7 +363,12 @@ final class AccountManager {
      */
     private func positionForNewAccount() -> Int {
         
-        if let maxPosition = DatabaseManager.sharedInstance.dataStack.queryValue(From(Account.self), Select<Int>(.maximum(#keyPath(Account.position)))) {
+        let maxPosition : Int? = try? DatabaseManager.sharedInstance.dataStack.queryValue(
+            From<Account>(),
+            Select<Account, Int>(.maximum(\.position))
+        )
+        
+        if let maxPosition = maxPosition {
             if (maxPosition == 0) {
                 return maxPosition
             } else {
@@ -381,7 +385,7 @@ final class AccountManager {
         var privateKeyBytes: Array<UInt8> = Array(repeating: 0, count: 32)
         createPrivateKey(&privateKeyBytes)
         
-        let privateKey = Data(bytes: privateKeyBytes).toHexadecimalString()
+        let privateKey = Data(privateKeyBytes).toHexadecimalString()
 
         return privateKey.nemKeyNormalized()!
     }

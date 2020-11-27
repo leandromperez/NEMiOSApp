@@ -47,7 +47,7 @@ final class AccountAdditionMenuAddExistingAccountPrivateKeyViewController: UIVie
         title = "IMPORT_FROM_KEY".localized()
         accountPrivateKeyTextField.placeholder = "PRIVATE_KEY".localized()
         accountTitleTextField.placeholder = "NAME".localized()
-        addAccountButton.setTitle("ADD_ACCOUNT".localized(), for: UIControlState())
+        addAccountButton.setTitle("ADD_ACCOUNT".localized(), for: UIControl.State())
         
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
@@ -56,24 +56,24 @@ final class AccountAdditionMenuAddExistingAccountPrivateKeyViewController: UIVie
     /// Adds all needed keyboard observers to the view controller.
     fileprivate func addKeyboardObserver() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuAddExistingAccountPrivateKeyViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuAddExistingAccountPrivateKeyViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuAddExistingAccountPrivateKeyViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountAdditionMenuAddExistingAccountPrivateKeyViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     /// Makes the scroll view scrollable as soon as the keyboard shows.
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         let info: NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
-        let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         var keyboardHeight:CGFloat = keyboardSize.height
         keyboardHeight -= self.view.frame.height - self.scrollView.frame.height
         
-        scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight - 10, 0)
-        scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, keyboardHeight + 15, 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - 10, right: 0)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight + 15, right: 0)
     }
     
     /// Resets the scroll view as soon as the keyboard hides.
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
@@ -133,33 +133,33 @@ final class AccountAdditionMenuAddExistingAccountPrivateKeyViewController: UIVie
             
         } catch AccountImportValidation.valueMissing {
             
-            let importAccountValueMissingAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: "FIELDS_EMPTY_ERROR".localized(), preferredStyle: UIAlertControllerStyle.alert)
+            let importAccountValueMissingAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: "FIELDS_EMPTY_ERROR".localized(), preferredStyle: UIAlertController.Style.alert)
             
-            importAccountValueMissingAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: nil))
+            importAccountValueMissingAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: nil))
             
             present(importAccountValueMissingAlert, animated: true, completion: nil)
             
         } catch AccountImportValidation.invalidPrivateKey {
             
-            let importAccountInvalidPrivateKeyAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: "PRIVATE_KEY_ERROR_1".localized(), preferredStyle: UIAlertControllerStyle.alert)
+            let importAccountInvalidPrivateKeyAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: "PRIVATE_KEY_ERROR_1".localized(), preferredStyle: UIAlertController.Style.alert)
             
-            importAccountInvalidPrivateKeyAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: nil))
+            importAccountInvalidPrivateKeyAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: nil))
             
             present(importAccountInvalidPrivateKeyAlert, animated: true, completion: nil)
             
         } catch AccountImportValidation.accountAlreadyPresent(let existingAccountTitle) {
             
-            let importAccountAlreadyPresentAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: String(format: "VIDATION_ACCOUNT_EXIST".localized(), arguments:[existingAccountTitle]), preferredStyle: UIAlertControllerStyle.alert)
+            let importAccountAlreadyPresentAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: String(format: "VIDATION_ACCOUNT_EXIST".localized(), arguments:[existingAccountTitle]), preferredStyle: UIAlertController.Style.alert)
             
-            importAccountAlreadyPresentAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: nil))
+            importAccountAlreadyPresentAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: nil))
             
             present(importAccountAlreadyPresentAlert, animated: true, completion: nil)
             
         } catch {
             
-            let importAccountOtherAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: "Couldn't add account", preferredStyle: UIAlertControllerStyle.alert)
+            let importAccountOtherAlert: UIAlertController = UIAlertController(title: "VALIDATION".localized(), message: "Couldn't add account", preferredStyle: UIAlertController.Style.alert)
             
-            importAccountOtherAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: nil))
+            importAccountOtherAlert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: nil))
             
             present(importAccountOtherAlert, animated: true, completion: nil)
         }

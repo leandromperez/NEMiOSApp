@@ -144,9 +144,9 @@ final class WalletOverviewViewController: UIViewController {
     private func updateViewControllerAppearance() {
         
         navigationItem.title = "ACCOUNTS".localized()
-        addAccountButton.setTitle("ADD_ACCOUNT".localized(), for: UIControlState())
-        addAccountButton.setImage(#imageLiteral(resourceName: "Add").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControlState())
-        addAccountButton.imageView!.contentMode = UIViewContentMode.scaleAspectFit
+        addAccountButton.setTitle("ADD_ACCOUNT".localized(), for: UIControl.State())
+        addAccountButton.setImage(#imageLiteral(resourceName: "Add").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControl.State())
+        addAccountButton.imageView!.contentMode = UIView.ContentMode.scaleAspectFit
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         createEditButtonItemIfNeeded()
     }
@@ -178,7 +178,7 @@ final class WalletOverviewViewController: UIViewController {
     }
     
     /// Synchronizes the application time with the network time.
-    internal func refreshNetworkTime() {
+    @objc internal func refreshNetworkTime() {
         TimeManager.sharedInstance.synchronizeTime()
     }
     
@@ -223,7 +223,7 @@ extension WalletOverviewViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         switch editingStyle {
         case .delete:

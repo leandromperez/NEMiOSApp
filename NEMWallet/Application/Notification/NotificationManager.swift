@@ -45,7 +45,7 @@ final class NotificationManager {
         let userNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         
         application.registerUserNotificationSettings(userNotificationSettings)
-        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         clearApplicationIconBadge()
     }
     
@@ -59,7 +59,12 @@ final class NotificationManager {
     public func notifyAboutNewTransactions(withCompletionHandler backgroundFetchCompletionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         fetchNewTransactionsDispatchGroup.enter()
-        discoverRespondingServer()
+        do {
+            try discoverRespondingServer()
+        }
+        catch {
+            backgroundFetchCompletionHandler(.failed)
+        }
         
         discoverRespondingServerDispatchGroup.notify(queue: .main) {
             
@@ -113,9 +118,9 @@ final class NotificationManager {
         responding server to look for new transactions later on. Stores the discovered responding server
         in the 'respondingServer' property.
      */
-    private func discoverRespondingServer() {
+    private func discoverRespondingServer() throws {
         
-        let servers = SettingsManager.sharedInstance.servers()
+        let servers = try SettingsManager.sharedInstance.servers()
         
         for server in servers {
             getHeartbeatResponse(fromServer: server, completion: { [unowned self] (result) in
@@ -312,7 +317,7 @@ final class NotificationManager {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var allTransactions = [Transaction]()
                     
                     for (_, subJson) in json["data"] {
@@ -391,7 +396,7 @@ final class NotificationManager {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var allTransactions = [Transaction]()
                     
                     for (_, subJson) in json["data"] {

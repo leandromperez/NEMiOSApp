@@ -136,7 +136,7 @@ final class TransactionOverviewViewController: UIViewController {
     }
     
     /// Segues to the transaction send view controller.
-    func segueToTransactionSendViewController() {
+    @objc func segueToTransactionSendViewController() {
         performSegue(withIdentifier: "showTransactionSendViewController", sender: nil)
     }
     
@@ -165,13 +165,13 @@ final class TransactionOverviewViewController: UIViewController {
     fileprivate func updateInfoHeaderLabel(withAccountData accountData: AccountData?) {
         
         guard accountData != nil else {
-            infoHeaderLabel.attributedText = NSMutableAttributedString(string: "LOST_CONNECTION".localized(), attributes: [NSForegroundColorAttributeName : UIColor.red])
+            infoHeaderLabel.attributedText = NSMutableAttributedString(string: "LOST_CONNECTION".localized(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.red])
             return
         }
         
         let infoHeaderText = NSMutableAttributedString(string: "\(self.account!.title) ·")
         let infoHeaderTextBalance = " \((accountData!.balance / 1000000).format()) XEM"
-        infoHeaderText.append(NSMutableAttributedString(string: infoHeaderTextBalance, attributes: [NSForegroundColorAttributeName: UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1), NSFontAttributeName: UIFont.systemFont(ofSize: infoHeaderLabel.font.pointSize, weight: UIFontWeightRegular)]))
+        infoHeaderText.append(NSMutableAttributedString(string: infoHeaderTextBalance, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: infoHeaderLabel.font.pointSize, weight: UIFont.Weight.regular)]))
         
         infoHeaderLabel.attributedText = infoHeaderText
     }
@@ -212,7 +212,7 @@ final class TransactionOverviewViewController: UIViewController {
      
         - Parameter updateStatusBarButton: Bool whether the status bar button status should get updated or not.
     */
-    func refreshTransactionOverview(updateStatusBarButton: Bool = false) {
+    @objc func refreshTransactionOverview(updateStatusBarButton: Bool = false) {
         
         transactions = [Transaction]()
         
@@ -247,7 +247,7 @@ final class TransactionOverviewViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var accountData = try json.mapObject(AccountData.self)
                     
                     if accountData.publicKey == "" {
@@ -307,7 +307,7 @@ final class TransactionOverviewViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var allTransactions = [Transaction]()
                     
                     for (_, subJson) in json["data"] {
@@ -391,7 +391,7 @@ final class TransactionOverviewViewController: UIViewController {
                 do {
                     let _ = try response.filterSuccessfulStatusCodes()
                     
-                    let json = JSON(data: response.data)
+                    let json = try JSON(data: response.data)
                     var unconfirmedTransactions = [Transaction]()
                     
                     for (_, subJson) in json["data"] {
@@ -461,15 +461,15 @@ final class TransactionOverviewViewController: UIViewController {
                         if self != nil {
                             if needToSign && self!.showSignTransactionsAlert {
                                 
-                                let alert = UIAlertController(title: "INFO".localized(), message: "UNCONFIRMED_TRANSACTIONS_DETECTED".localized(), preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: "INFO".localized(), message: "UNCONFIRMED_TRANSACTIONS_DETECTED".localized(), preferredStyle: UIAlertController.Style.alert)
                                 
-                                let alertCancelAction = UIAlertAction(title: "REMIND_LATER".localized(), style: UIAlertActionStyle.default, handler: { (action) in
+                                let alertCancelAction = UIAlertAction(title: "REMIND_LATER".localized(), style: UIAlertAction.Style.default, handler: { (action) in
                                     
                                     self?.showSignTransactionsAlert = false
                                 })
                                 alert.addAction(alertCancelAction)
                                 
-                                let alertShowUnsignedTransactionsAction = UIAlertAction(title: "SHOW_TRANSACTIONS".localized(), style: UIAlertActionStyle.default, handler: { (action) in
+                                let alertShowUnsignedTransactionsAction = UIAlertAction(title: "SHOW_TRANSACTIONS".localized(), style: UIAlertAction.Style.default, handler: { (action) in
                                     
                                     self?.showSignTransactionsAlert = false
                                     self?.performSegue(withIdentifier: "showTransactionUnconfirmedViewController", sender: nil)
@@ -547,7 +547,7 @@ final class TransactionOverviewViewController: UIViewController {
                     }
                     
                     if correspondents.contains(correspondent!) {
-                        if let index = correspondents.index(of: correspondent!) {
+                        if let index = correspondents.firstIndex(of: correspondent!) {
                             if transaction.metaData?.id != nil {
                                 correspondents[index].transactions.append(transaction)
                             } else {

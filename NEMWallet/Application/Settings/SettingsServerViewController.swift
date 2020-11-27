@@ -26,7 +26,11 @@ final class SettingsServerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        servers = SettingsManager.sharedInstance.servers()
+        if let servers = try? SettingsManager.sharedInstance.servers() {
+            self.servers = servers
+        } else {
+            //TODO: lmp error handling
+        }
         
         updateViewControllerAppearance()
         createEditButtonItemIfNeeded()
@@ -57,9 +61,9 @@ final class SettingsServerViewController: UIViewController {
     fileprivate func updateViewControllerAppearance() {
         
         navigationItem.title = "SERVER".localized()
-        addServerButton.setTitle("ADD_SERVER".localized(), for: UIControlState())
-        addServerButton.setImage(#imageLiteral(resourceName: "Add").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControlState())
-        addServerButton.imageView!.contentMode = UIViewContentMode.scaleAspectFit
+        addServerButton.setTitle("ADD_SERVER".localized(), for: UIControl.State())
+        addServerButton.setImage(#imageLiteral(resourceName: "Add").imageWithColor(UIColor(red: 90.0/255.0, green: 179.0/255.0, blue: 232.0/255.0, alpha: 1)), for: UIControl.State())
+        addServerButton.imageView!.contentMode = UIView.ContentMode.scaleAspectFit
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
@@ -80,11 +84,11 @@ final class SettingsServerViewController: UIViewController {
         - Parameter message: The message that should get shown.
         - Parameter completion: An optional action that should get performed on completion.
      */
-    fileprivate func showAlert(withMessage message: String, completion: ((Void) -> Void)? = nil) {
+    fileprivate func showAlert(withMessage message: String, completion: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "INFO".localized(), message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
             completion?()
         }))
@@ -249,9 +253,12 @@ final class SettingsServerViewController: UIViewController {
         servers to show.
      */
     @IBAction func unwindToServerViewController(_ segue: UIStoryboardSegue) {
-        
-        servers = SettingsManager.sharedInstance.servers()
-        tableView.reloadData()
+        do {
+            servers = try SettingsManager.sharedInstance.servers()
+            tableView.reloadData()
+        } catch let error {
+            //TODO: lmp error handling
+        }
     }
 }
 
@@ -297,7 +304,7 @@ extension SettingsServerViewController: UITableViewDataSource {
         tableView.setEditing(editing, animated: animated)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         switch editingStyle {
         case .delete:

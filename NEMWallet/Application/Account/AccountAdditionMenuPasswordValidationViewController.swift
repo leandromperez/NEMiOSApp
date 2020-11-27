@@ -47,7 +47,7 @@ final class AccountAdditionMenuPasswordValidationViewController: UIViewControlle
         
         customNavigationItem.title = "ENTET_PASSWORD".localized()
         passwordTextField.placeholder = "PASSWORD_PLACEHOLDER".localized()
-        confirmationButton.setTitle("CONFIRM".localized(), for: UIControlState())
+        confirmationButton.setTitle("CONFIRM".localized(), for: UIControl.State())
         
         containerView.layer.cornerRadius = 5
         containerView.clipsToBounds = true
@@ -73,7 +73,7 @@ final class AccountAdditionMenuPasswordValidationViewController: UIViewControlle
         let accountSaltData = NSData(bytes: accountSaltBytes, length: accountSaltBytes.count)
 
         guard let passwordHash = try? HashManager.generateAesKeyForString(enteredPassword, salt: accountSaltData, roundCount:2000) else { throw AccountImportValidation.other }
-        guard let accountPrivateKey = HashManager.AES256Decrypt(inputText: accountEncryptedPrivateKey, key: passwordHash!.toHexString())?.nemKeyNormalized() else { throw AccountImportValidation.wrongPasswordProvided }
+        guard let accountPrivateKey = HashManager.AES256Decrypt(inputText: accountEncryptedPrivateKey, key: passwordHash.toHexString())?.nemKeyNormalized() else { throw AccountImportValidation.wrongPasswordProvided }
                                 
         do {
             let _ = try AccountManager.sharedInstance.validateAccountExistence(forAccountWithPrivateKey: accountPrivateKey)
