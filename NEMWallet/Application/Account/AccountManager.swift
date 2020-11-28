@@ -50,6 +50,8 @@ final class AccountManager {
      */
     public func create(account title: String, withPrivateKey privateKey: String? = AccountManager.sharedInstance.generatePrivateKey(), completion: @escaping (_ result: Result, _ account: Account?) -> Void) {
 
+        //lmp: moved this line out of the async block, because it was ran in a sec thread, causing an assertion to throw, requiring it to be in the main thread.
+        let newAccountPosition = if
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Account in
@@ -59,7 +61,7 @@ final class AccountManager {
                 account.publicKey = self.generatePublicKey(fromPrivateKey: privateKey!)
                 account.privateKey = self.encryptPrivateKey(privateKey!)
                 account.address = self.generateAddress(forPublicKey: account.publicKey)
-                account.position = self.positionForNewAccount() as NSNumber
+                account.position = newAccountPosition
                 
                 return account
             },
@@ -84,7 +86,7 @@ final class AccountManager {
     public func delete(account: Account, completion: @escaping (_ result: Result) -> Void) {
         
         var accounts = self.accounts()
-        accounts.remove(at: Int(account.position))
+        accounts.remove(at: account.position.intValue)
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Void in
@@ -117,7 +119,7 @@ final class AccountManager {
             
                 for account in accounts {
                     let editableAccount = transaction.edit(account)!
-                    editableAccount.position = accounts.index(of: account)! as NSNumber
+                    editableAccount.position = accounts.firstIndex(of: account)! as NSNumber
                 }
             },
             success: {
@@ -403,7 +405,7 @@ final class AccountManager {
         var privateKeyBytes: Array<UInt8> = privateKey.asByteArrayEndian(privateKey.asByteArray().count)
         createPublicKey(&publicKeyBytes, &privateKeyBytes)
         
-        let publicKey = Data(bytes: publicKeyBytes).toHexadecimalString()
+        let publicKey = Data(publicKeyBytes).toHexadecimalString()
         
         return publicKey.nemKeyNormalized()!
     }

@@ -110,7 +110,8 @@ final class AddressBookAddContactViewController: UITableViewController {
             case .failure:
                 
                 self?.showAlert(withMessage: "CANNOT_ACCESS_CONTACTS".localized(), completion: { () in
-                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+                    let url = URL(string: UIApplication.openSettingsURLString)!
+                    UIApplication.shared.open(url)
                 })
             }
         }

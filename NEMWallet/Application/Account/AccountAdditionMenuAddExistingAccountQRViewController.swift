@@ -241,8 +241,6 @@ final class AccountAdditionMenuAddExistingAccountQRViewController: UIViewControl
         - Returns: A bool indicating that the validation was successful.
      */
     fileprivate func validate(captureResult: JSON) throws -> Bool {
-        
-        guard captureResult != nil else { throw AccountImportValidation.valueMissing }
         guard captureResult[QRKeys.version.rawValue].intValue == Constants.qrVersion else { throw AccountImportValidation.versionNotMatching }
         guard captureResult[QRKeys.dataType.rawValue].intValue == QRType.accountData.rawValue else { throw AccountImportValidation.dataTypeNotMatching }
         guard captureResult["data"][QRKeys.name.rawValue].string != nil else { throw AccountImportValidation.valueMissing }

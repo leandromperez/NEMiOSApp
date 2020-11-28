@@ -225,7 +225,6 @@ final class InvoiceScannerViewController: UIViewController {
      */
     fileprivate func validate(captureResult: JSON) throws -> Bool {
         
-        guard captureResult != nil else { throw AccountImportValidation.valueMissing }
         guard captureResult[QRKeys.version.rawValue].intValue == Constants.qrVersion else { throw AccountImportValidation.versionNotMatching }
         guard captureResult[QRKeys.dataType.rawValue].intValue == QRType.userData.rawValue || captureResult[QRKeys.dataType.rawValue].intValue == QRType.invoice.rawValue else { throw AccountImportValidation.dataTypeNotMatching }
         

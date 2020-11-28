@@ -721,12 +721,12 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
             switch transaction.type {
             case .transferTransaction:
                 
-                transferTransaction = transaction as! TransferTransaction
+                transferTransaction = (transaction as! TransferTransaction)
                 
             case .multisigTransaction:
                 
-                multisigTransaction = transaction as! MultisigTransaction
-                transferTransaction = multisigTransaction!.innerTransaction as! TransferTransaction
+                multisigTransaction = (transaction as! MultisigTransaction)
+                transferTransaction = (multisigTransaction!.innerTransaction as! TransferTransaction)
                 
             default:
                 break
@@ -995,12 +995,12 @@ extension TransactionMessagesViewController: UITableViewDataSource, UITableViewD
             switch transactions[indexPath.row].type {
             case .transferTransaction:
                 
-                transaction = transactions[indexPath.row] as! TransferTransaction
+                transaction = (transactions[indexPath.row] as! TransferTransaction)
                 
             case .multisigTransaction:
                 
-                multisigTransaction = transactions[indexPath.row] as! MultisigTransaction
-                transaction = multisigTransaction!.innerTransaction as! TransferTransaction
+                multisigTransaction = (transactions[indexPath.row] as! MultisigTransaction)
+                transaction = (multisigTransaction!.innerTransaction as! TransferTransaction)
                 
             default:
                 break
@@ -1029,12 +1029,12 @@ extension TransactionMessagesViewController: UITableViewDataSource, UITableViewD
             switch unconfirmedTransactions[indexPath.row - transactions.count - 1].type {
             case .transferTransaction:
                 
-                transaction = unconfirmedTransactions[indexPath.row - transactions.count - 1] as! TransferTransaction
+                transaction = (unconfirmedTransactions[indexPath.row - transactions.count - 1] as! TransferTransaction)
                 
             case .multisigTransaction:
                 
-                multisigTransaction = unconfirmedTransactions[indexPath.row - transactions.count - 1] as! MultisigTransaction
-                transaction = multisigTransaction!.innerTransaction as! TransferTransaction
+                multisigTransaction = (unconfirmedTransactions[indexPath.row - transactions.count - 1] as! MultisigTransaction)
+                transaction = (multisigTransaction!.innerTransaction as! TransferTransaction)
                 
             default:
                 break

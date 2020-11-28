@@ -72,7 +72,7 @@ final class AddressBookViewController: UIViewController, UITextFieldDelegate {
         case "showTransactionSendViewController":
             
             let destinationViewController = segue.destination as! TransactionSendViewController
-            destinationViewController.recipientAddress = sender as! String
+            destinationViewController.recipientAddress = (sender as! String)
             
         default:
             return

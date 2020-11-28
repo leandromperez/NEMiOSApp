@@ -52,8 +52,7 @@ public struct AccountData: SwiftyJSONMappable {
     // MARK: - Model Lifecycle
     
     public init?(jsonData: JSON) {
-        
-        if jsonData["meta"] == nil {
+        if jsonData.dictionary?.keys.contains("meta") == false {
             address = jsonData["address"].stringValue
             publicKey = jsonData["publicKey"].stringValue
             balance = jsonData["balance"].doubleValue

@@ -7,6 +7,7 @@
 
 import Quick
 import Nimble
+
 @testable import NEMWallet
 
 final class AccountTests: QuickSpec {
@@ -26,7 +27,7 @@ final class AccountTests: QuickSpec {
                             
                             accounts = AccountManager.sharedInstance.accounts()
                             generatedAccount = createdAccount!
-                            generatedAccountIndex = accounts.index(of: createdAccount!)!
+                            generatedAccountIndex = accounts.firstIndex(of: createdAccount!)!
                             
                             done()
                         })
@@ -55,7 +56,7 @@ final class AccountTests: QuickSpec {
                 
                 it("positions the account correctly") {
                     
-                    let maxPosition = accounts.max { a, b in Int(a.position) < Int(b.position) }
+                    let maxPosition = accounts.max { a, b in a.position.intValue < b.position.intValue }
                     expect(accounts[generatedAccountIndex].position).to(equal(maxPosition!.position))
                 }
             }
@@ -99,7 +100,7 @@ final class AccountTests: QuickSpec {
                 
                 it("positions the account correctly") {
                     
-                    let maxPosition = accounts.max { a, b in Int(a.position) < Int(b.position) }
+                    let maxPosition = accounts.max { a, b in a.position.intValue < b.position.intValue }
                     expect(accounts[importedAccountIndex].position).to(equal(maxPosition!.position))
                 }
             }
@@ -129,16 +130,16 @@ final class AccountTests: QuickSpec {
             
             it("updates the position of all remaining accounts") {
                 
-                let maxPosition = accounts.max { a, b in Int(a.position) < Int(b.position) }
+                let maxPosition = accounts.max { a, b in a.position.intValue < b.position.intValue }
                 var positionIncrement = 0
                 
                 for account in accounts {
-                    if Int(account.position) == positionIncrement && positionIncrement < (accounts.count - 1)  {
+                    if account.position.intValue == positionIncrement && positionIncrement < (accounts.count - 1)  {
                         positionIncrement += 1
                     }
                 }
                 
-                expect(positionIncrement).to(equal(Int(maxPosition!.position)))
+                expect(positionIncrement).to(equal(maxPosition!.position.intValue))
             }
         }
         
@@ -151,7 +152,7 @@ final class AccountTests: QuickSpec {
                 
                 var movedAccounts = accounts!
                 let movedAccount = movedAccounts[Int(arc4random_uniform(UInt32(movedAccounts.count)) + UInt32(0))]
-                let movedAccountIndexBefore = movedAccounts.index(of: movedAccount)!
+                let movedAccountIndexBefore = movedAccounts.firstIndex(of: movedAccount)!
                 let movedAccountIndexAfter = Int(arc4random_uniform(UInt32(accounts.count)) + UInt32(0))
                 
                 movedAccounts.remove(at: movedAccountIndexBefore)
@@ -159,13 +160,13 @@ final class AccountTests: QuickSpec {
                 
                 waitUntil { done in
                     
-                    AccountManager.sharedInstance.updatePosition(ofAccounts: movedAccounts, completion: { (result) in
+                    AccountManager.sharedInstance.up---datePosition(ofAccounts: movedAccounts, completion: { (result) in
                         accounts = AccountManager.sharedInstance.accounts()
                         done()
                     })
                 }
                 
-                expect(accounts.index(of: movedAccount)).to(equal(movedAccountIndexAfter))
+                expect(accounts.firstIndex(of: movedAccount)).to(equal(movedAccountIndexAfter))
             }
         }
     }

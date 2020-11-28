@@ -26,6 +26,6 @@ public func == (lhs: MultisigSignatureTransaction, rhs: MultisigSignatureTransac
 extension MultisigSignatureTransaction: CustomStringConvertible {
     
     public var description: String {
-        return "NemIOSClient.MultisigSignatureTransaction(type: \(type), timeStamp: \(timeStamp), fee: \(fee), deadline: \(deadline), signature: \(signature), signer: \(signer), otherAccount: \(otherAccount))"
+        return "NemIOSClient.MultisigSignatureTransaction(type: \(type), timeStamp: \(timeStamp.unwrappedString), fee: \(fee.unwrappedString), deadline: \(deadline.unwrappedString), signature: \(signature.unwrappedString), signer: \(signer.unwrappedString), otherAccount: \(otherAccount.unwrappedString))"
     }
 }

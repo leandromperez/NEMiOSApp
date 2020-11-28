@@ -9,17 +9,18 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - ObjectMapper (4.2.0)
+  - Nimble (9.0.0)
+  - Quick (3.0.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire
   - AlamofireNetworkActivityIndicator
   - CoreStore
   - CryptoSwift
   - KeychainSwift (~> 19.0)
   - Moya
-  - ObjectMapper
+  - Nimble
+  - Quick
   - SwiftyJSON
 
 SPEC REPOS:
@@ -30,7 +31,8 @@ SPEC REPOS:
     - CryptoSwift
     - KeychainSwift
     - Moya
-    - ObjectMapper
+    - Nimble
+    - Quick
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -40,9 +42,10 @@ SPEC CHECKSUMS:
   CryptoSwift: b6faad405e69964740422daf121918b5b1870f2b
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 2ae99860d04be319b7f35f471e2de3b998f57cfd
+PODFILE CHECKSUM: a901923d2516ce231b1656697965c6453ff8ae20
 
 COCOAPODS: 1.10.0

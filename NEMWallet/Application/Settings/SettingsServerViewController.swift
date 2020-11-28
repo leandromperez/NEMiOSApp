@@ -257,6 +257,7 @@ final class SettingsServerViewController: UIViewController {
             servers = try SettingsManager.sharedInstance.servers()
             tableView.reloadData()
         } catch let error {
+            assertionFailure("should do something with \(error)")
             //TODO: lmp error handling
         }
     }

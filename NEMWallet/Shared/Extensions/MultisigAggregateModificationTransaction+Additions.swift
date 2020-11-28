@@ -12,6 +12,6 @@ import Foundation
 extension MultisigAggregateModificationTransaction: CustomStringConvertible {
     
     public var description: String {
-        return "NemIOSClient.MultisigAggregateModificationTransaction(type: \(type), metaData: \(metaData), version: \(version), timeStamp: \(timeStamp), fee: \(fee), modifications: \(modifications), relativeChange: \(relativeChange), deadline: \(deadline), signature: \(signature), signer: \(signer))"
+        return "NemIOSClient.MultisigAggregateModificationTransaction(type: \(type), metaData: \(metaData.unwrappedString), version: \(version.unwrappedString), timeStamp: \(timeStamp.unwrappedString), fee: \(fee.unwrappedString), modifications: \(modifications), relativeChange: \(relativeChange.unwrappedString), deadline: \(deadline.unwrappedString), signature: \(signature.unwrappedString), signer: \(signer.unwrappedString))"
     }
 }

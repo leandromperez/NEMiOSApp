@@ -30,6 +30,18 @@ public func == (lhs: TransferTransaction, rhs: TransferTransaction) -> Bool {
 extension TransferTransaction: CustomStringConvertible {
     
     public var description: String {
-        return "NemIOSClient.TransferTransaction(type: \(type), timeStamp: \(timeStamp), metaData: \(metaData), amount: \(amount), fee: \(fee), transferType: \(transferType), recipient: \(recipient), message: \(String(describing: message)), deadline: \(deadline), signature: \(signature), signer: \(signer))"
+        return "NemIOSClient.TransferTransaction(type: \(type), timeStamp: \(timeStamp.unwrappedString), metaData: \(metaData.unwrappedString), amount: \(amount.unwrappedString), fee: \(fee.unwrappedString), transferType: \(transferType.unwrappedString), recipient: \(recipient.unwrappedString), message: \(String(describing: message)), deadline: \(deadline.unwrappedString), signature: \(signature.unwrappedString), signer: \(signer.unwrappedString))"
+    }
+}
+
+
+extension Optional {
+    var unwrappedString : String {
+        switch self {
+        case .none :
+            return "nil"
+        case .some(let value):
+            return "\(value)"
+        }
     }
 }
