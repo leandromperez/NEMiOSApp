@@ -153,9 +153,8 @@ final class AccountAdditionMenuAddExistingAccountQRViewController: UIViewControl
         
         // Add video input.
         do {
-            var defaultVideoDevice: AVCaptureDevice?
-            defaultVideoDevice = AVCaptureDevice.default(for: .video)
-            let videoDeviceInput = try AVCaptureDeviceInput(device: defaultVideoDevice!)
+            let defaultVideoDevice = AVCaptureDevice.default(for: .video)!
+            let videoDeviceInput = try AVCaptureDeviceInput(device: defaultVideoDevice)
             
             if session.canAddInput(videoDeviceInput) {
                 session.addInput(videoDeviceInput)

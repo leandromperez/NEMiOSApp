@@ -73,13 +73,13 @@ final class AuthenticationViewController: UIViewController {
      */
     private func checkApplicationPassword() {
         
-        guard passwordTextField.text != nil else { return }
+        guard let passwordText = passwordTextField.text else { return }
         
         let salt = SettingsManager.sharedInstance.authenticationSalt()
         let saltData = NSData.fromHexString(salt!)
         let encryptedPassword = SettingsManager.sharedInstance.applicationPassword()
         
-        let passwordData: NSData? = try! HashManager.generateAesKeyForString(passwordTextField.text!, salt: saltData, roundCount: 2000)!
+        let passwordData: NSData? = try? HashManager.generateAesKeyForString(passwordText, salt: saltData, roundCount: 2000)
         
         if passwordData?.toHexString() == encryptedPassword {
             authenticationSuccessful()
