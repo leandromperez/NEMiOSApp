@@ -160,7 +160,7 @@ final class AccountTests: QuickSpec {
                 
                 waitUntil { done in
                     
-                    AccountManager.sharedInstance.up---datePosition(ofAccounts: movedAccounts, completion: { (result) in
+                    AccountManager.sharedInstance.updatePosition(ofAccounts: movedAccounts, completion: { (result) in
                         accounts = AccountManager.sharedInstance.accounts()
                         done()
                     })

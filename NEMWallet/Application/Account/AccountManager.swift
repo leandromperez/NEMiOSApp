@@ -51,7 +51,7 @@ final class AccountManager {
     public func create(account title: String, withPrivateKey privateKey: String? = AccountManager.sharedInstance.generatePrivateKey(), completion: @escaping (_ result: Result, _ account: Account?) -> Void) {
 
         //lmp: moved this line out of the async block, because it was ran in a sec thread, causing an assertion to throw, requiring it to be in the main thread.
-        let newAccountPosition = if
+        let newAccountPosition = self.positionForNewAccount() as NSNumber
         
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Account in
