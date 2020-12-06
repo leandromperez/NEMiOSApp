@@ -119,8 +119,8 @@ final class TransactionManager {
 
         transactionSignatureByteArray = generateTransactionSignature(forTransactionWithData: transactionByteArray, signWithAccount: account)
 
-        transactionByteArrayHexadecimal = transactionByteArray.toHexadecimalString()
-        transactionSignatureByteArrayHexadecimal = transactionSignatureByteArray.toHexadecimalString()
+        transactionByteArrayHexadecimal = transactionByteArray.toHexString()
+        transactionSignatureByteArrayHexadecimal = transactionSignatureByteArray.toHexString()
 
         let requestAnnounce = RequestAnnounce(data: transactionByteArrayHexadecimal, signature: transactionSignatureByteArrayHexadecimal)
         

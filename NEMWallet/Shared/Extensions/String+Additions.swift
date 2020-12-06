@@ -28,7 +28,7 @@ extension String {
     
     func hexadecimalStringUsingEncoding(_ encoding: String.Encoding) -> String? {
         let data = self.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        return data?.toHexadecimalString()
+        return data?.toHexString()
     }
     
     func asByteArray()-> Array<UInt8> {

@@ -2,22 +2,14 @@ import Foundation
 
 extension Data {
     public func toHexString () -> String {
-        let sha256description = self.description as String
         
-        // TODO: more elegant way to convert NSData to a hex string
+        var byteArrayHexadecimalString = String()
         
-        var result: String = ""
-
-        for char in sha256description {
-            switch char {
-            case "0", "1", "2", "3", "4", "5", "6", "7","8","9", "a", "b", "c", "d", "e", "f":
-                result.append(char)
-            default:
-                result += String("")
-            }
+        for value in self {
+            byteArrayHexadecimalString = byteArrayHexadecimalString + (NSString(format: "%02x", value) as String)
         }
         
-        return result
+        return byteArrayHexadecimalString
     }
 
     public static func fromHexString (_ string: String) -> Data {
@@ -44,42 +36,10 @@ extension Data {
 
 extension NSData {
     public func toHexString () -> String {
-        let sha256description = self.description as String
-        
-        // TODO: more elegant way to convert NSData to a hex string
-        
-        var result: String = ""
-        
-        for char in sha256description {
-            switch char {
-            case "0", "1", "2", "3", "4", "5", "6", "7","8","9", "a", "b", "c", "d", "e", "f":
-                result.append(char)
-            default:
-                result += String("")
-            }
-        }
-        
-        return result
+        return (self as Data).toHexString()
     }
-    
+
     public static func fromHexString (_ string: String) -> NSData {
-        // Based on: http://stackoverflow.com/a/2505561/313633
-        let data = NSMutableData()
-        
-        var temp = ""
-        
-        for char in string {
-            temp+=String(char)
-            if(temp.count == 2) {
-                let scanner = Scanner(string: temp)
-                var value: CUnsignedInt = 0
-                scanner.scanHexInt32(&value)
-                data.append(&value, length: 1)
-                temp = ""
-            }
-            
-        }
-        
-        return data
+        return Data.fromHexString(string) as NSData
     }
 }

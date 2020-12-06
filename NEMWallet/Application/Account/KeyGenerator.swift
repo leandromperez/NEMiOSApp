@@ -15,7 +15,7 @@ struct KeyGenerator {
         var privateKeyBytes: Array<UInt8> = Array(repeating: 0, count: 32)
         createPrivateKey(&privateKeyBytes)
         
-        let privateKey = Data(privateKeyBytes).toHexadecimalString()
+        let privateKey = Data(privateKeyBytes).toHexString()
 
         return privateKey.nemKeyNormalized()!
     }
@@ -33,7 +33,7 @@ struct KeyGenerator {
         var privateKeyBytes: Array<UInt8> = privateKey.asByteArrayEndian(privateKey.asByteArray().count)
         createPublicKey(&publicKeyBytes, &privateKeyBytes)
         
-        let publicKey = Data(publicKeyBytes).toHexadecimalString()
+        let publicKey = Data(publicKeyBytes).toHexString()
         
         return publicKey.nemKeyNormalized()!
     }

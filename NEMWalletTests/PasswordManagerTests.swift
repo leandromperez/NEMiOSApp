@@ -20,6 +20,30 @@ struct PasswordContants {
     static let saltData : [UInt8] = [35, 153, 255, 153, 195, 26, 24, 165, 25, 200, 228, 119, 195, 171, 158, 142, 30, 151, 175, 136, 59, 171, 3, 103, 233, 198, 162, 38, 20, 158, 176, 249]
 }
 
+
+final class DataTests : QuickSpec{
+    override func spec() {
+
+        describe("from byte array") {
+            it("must create a proper Data object") {
+                let saltData = NSData.fromHexString(PasswordContants.salt)
+                let bytes = saltData.arrayOfBytes()
+                let generated = NSData(bytes: bytes, length: bytes.count)
+                expect(saltData).to(equal(generated))
+
+            }
+        }
+        
+        describe("fromHexString to array of bytes") {
+            it("must be correct") {
+                let saltData = NSData.fromHexString(PasswordContants.salt)
+                let bytes = saltData.arrayOfBytes()
+                expect(bytes).to(equal(PasswordContants.saltData))
+            }
+        }
+    }
+}
+
 final class PasswordManagerTests : QuickSpec {
     
     
