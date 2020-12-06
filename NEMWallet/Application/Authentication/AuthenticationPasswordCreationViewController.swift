@@ -91,7 +91,7 @@ final class AuthenticationPasswordCreationViewController: UIViewController {
             return
         }
         
-        SettingsManager.sharedInstance.setApplicationPassword(applicationPassword: password)
+        PasswordManager.shared.set(applicationPassword: password)
         
         TimeManager.sharedInstance.synchronizeTime()        
         NotificationManager.sharedInstance.registerForNotifications()

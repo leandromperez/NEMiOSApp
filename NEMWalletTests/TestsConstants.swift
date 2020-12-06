@@ -9,6 +9,7 @@
 import Foundation
 
 struct TestConstants {
+    static let applicationPassword = "9b316300436d1dd4f7d5575a5f6227a67ef0491f2e523a0385f508a20438e6e9"
     static let privateKey = "3f996eafce31549cb6271b5c5b9626e26322ebd0225b559bfd135f9fbaf6bf3a"
     static let publicKey = "802d0efbb574857eb444c60b3728d8acb13cd163aa672e33871c963583fa7f0b"
     static let encriptedPrivateKey = "86234100b8bc3c337779380a2c80287a7b439170b179c8097f3e1532bd9659dc34f6c2bf5439bfce43d4216580cf9f67a498b917b684842d11aa22abe2f4d85f"

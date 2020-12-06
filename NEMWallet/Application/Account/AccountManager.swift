@@ -282,7 +282,7 @@ final class AccountManager {
      
         - Returns: The generated address as a string.
      */
-    public func generateAddress(forPublicKey publicKey: String) -> String {
+        public func generateAddress(forPublicKey publicKey: String) -> String {
         
         var inBuffer = publicKey.asByteArray()
         var stepOneSHA256: Array<UInt8> = Array(repeating: 0, count: 64)
@@ -339,8 +339,8 @@ final class AccountManager {
      */
     public func encryptPrivateKey(_ privateKey: String, withApplicationPassword applicationPassword: String? = nil) -> String {
         
-        let defaultApplicationPassword = SettingsManager.sharedInstance.applicationPassword()
-        let encryptedPrivateKey = HashManager.AES256Encrypt(inputText: privateKey, key: applicationPassword != nil ? applicationPassword! : defaultApplicationPassword)
+        let key = applicationPassword ?? PasswordManager.shared.applicationPassword() ?? ""
+        let encryptedPrivateKey = HashManager.AES256Encrypt(inputText: privateKey, key: key)
         
         return encryptedPrivateKey
     }
@@ -352,11 +352,9 @@ final class AccountManager {
      
         - Returns: The decrypted private key as a string.
      */
-    public func decryptPrivateKey(encryptedPrivateKey: String) -> String {
+    public func decryptPrivateKey(encryptedPrivateKey: String, applicationPassword: () -> String = {SettingsManager.sharedInstance.applicationPassword() ?? ""}) -> String {
         
-        
-        let applicationPassword = SettingsManager.sharedInstance.applicationPassword()
-        let privateKey = HashManager.AES256Decrypt(inputText: encryptedPrivateKey, key: applicationPassword)
+        let privateKey = HashManager.AES256Decrypt(inputText: encryptedPrivateKey, key: applicationPassword())
         
         return privateKey!
     }

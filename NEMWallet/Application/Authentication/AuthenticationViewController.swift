@@ -75,14 +75,8 @@ final class AuthenticationViewController: UIViewController {
         
         guard let passwordText = passwordTextField.text else { return }
         
-        let salt = SettingsManager.sharedInstance.authenticationSalt()
-        let saltData = NSData.fromHexString(salt!)
-        let encryptedPassword = SettingsManager.sharedInstance.applicationPassword()
-        
-        let passwordData: NSData? = try? HashManager.generateAesKeyForString(passwordText, salt: saltData, roundCount: 2000)
-        
-        //TODO: lmp restore/uncomment
-        if passwordData?.toHexString() == encryptedPassword {
+        let passwordIsCorrect = PasswordManager.shared.check(applicationPassword: passwordText)
+        if passwordIsCorrect {
             authenticationSuccessful()
         } else {
             passwordTextField.textColor = UIColor.red

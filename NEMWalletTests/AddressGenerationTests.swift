@@ -52,7 +52,7 @@ final class AddressGenerationTests : QuickSpec {
                 let stepOneSHA256Text = String(bytes: stepOneSHA256, encoding: .utf8)!
                 
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
-                print("4 🧔🏻 stepTwoRIPEMD160Text: \(stepTwoRIPEMD160Text)")
+                print("4 🪙 stepTwoRIPEMD160Text: \(stepTwoRIPEMD160Text)")
                 expect(stepTwoRIPEMD160Text).to(equal(TestConstants.stepTwoRIPEMD160Text))
             }
         }
@@ -67,7 +67,7 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 expect(stepTwoRIPEMD160Buffer).to(equal(TestConstants.stepTwoRIPEMD160Buffer))
 
@@ -85,12 +85,12 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
                 expect(version).to(equal(TestConstants.version))
             }
@@ -107,15 +107,15 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
-                var stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
-                print("7 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                let stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
+                print("7 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 expect(stepThreeVersionPrefixedRipemd160Buffer).to(equal(TestConstants.stepThreeVersionPrefixedRipemd160Buffer))
             }
@@ -132,22 +132,22 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
                 var stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
-                print("7 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("7 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 var checksumHash: Array<UInt8> = Array(repeating: 0, count: 64)
-                print("8 🧔🏻 checksumHash: \(checksumHash.stringify)")
+                print("8 🪙 checksumHash: \(checksumHash.stringify)")
                 
                 SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
-                print("9 🧔🏻 checksumHash: \(checksumHash.stringify))")
-                print("10 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("9 🪙 checksumHash: \(checksumHash.stringify))")
+                print("10 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 expect(checksumHash).to(equal(TestConstants.checksumHash))
                 expect(stepThreeVersionPrefixedRipemd160Buffer).to(equal(TestConstants.stepThreeVersionPrefixedRipemd160Buffer))
@@ -165,22 +165,22 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
                 var stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
-                print("7 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("7 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 var checksumHash: Array<UInt8> = Array(repeating: 0, count: 64)
-                print("8 🧔🏻 checksumHash: \(checksumHash.stringify)")
+                print("8 🪙 checksumHash: \(checksumHash.stringify)")
                 
                 SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
-                print("9 🧔🏻 checksumHash: \(checksumHash.stringify))")
-                print("10 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("9 🪙 checksumHash: \(checksumHash.stringify))")
+                print("10 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                
                 expect(checksumHash).to(equal(TestConstants.checksumHash))
                 expect(stepThreeVersionPrefixedRipemd160Buffer).to(equal(TestConstants.stepThreeVersionPrefixedRipemd160Buffer))
@@ -197,46 +197,46 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
                 var stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
-                print("7 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("7 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 var checksumHash: Array<UInt8> = Array(repeating: 0, count: 64)
-                print("8 🧔🏻 checksumHash: \(checksumHash.stringify)")
+                print("8 🪙 checksumHash: \(checksumHash.stringify)")
                 
                 SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
-                print("9 🧔🏻 checksumHash: \(checksumHash.stringify))")
-                print("10 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("9 🪙 checksumHash: \(checksumHash.stringify))")
+                print("10 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
-                let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue) as! String
-                print("11 🧔🏻 checksumText: \(checksumText)")
+                let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue)! as String
+                print("11 🪙 checksumText: \(checksumText)")
                 expect(checksumText).to(equal(TestConstants.checksumText))
 
-                var checksumBuffer = checksumText.asByteArray()
-                print("12 🧔🏻 checksumBuffer: \(checksumBuffer.reduce("", { $0 + ", \($1)" }))")
+                let checksumBuffer = checksumText.asByteArray()
+                print("12 🪙 checksumBuffer: \(checksumBuffer.reduce("", { $0 + ", \($1)" }))")
                 expect(checksumBuffer).to(equal(TestConstants.checksumBuffer))
                 
                 var checksum = Array<UInt8>()
                 checksum.append(checksumBuffer[0])
-                print("13 🧔🏻 checksum: \(checksum.stringify)")
+                print("13 🪙 checksum: \(checksum.stringify)")
                 expect(checksum).to(equal(TestConstants.checksumStep1))
                 
                 checksum.append(checksumBuffer[1])
-                print("14 🧔🏻 checksum: \(checksum.stringify)")
+                print("14 🪙 checksum: \(checksum.stringify)")
                 expect(checksum).to(equal(TestConstants.checksumStep2))
                 
                 checksum.append(checksumBuffer[2])
-                print("15 🧔🏻 checksum: \(checksum.stringify)")
+                print("15 🪙 checksum: \(checksum.stringify)")
                 expect(checksum).to(equal(TestConstants.checksumStep3))
                 
                 checksum.append(checksumBuffer[3])
-                print("16 🧔🏻 checksum: \(checksum.stringify)")
+                print("16 🪙 checksum: \(checksum.stringify)")
                 expect(checksum).to(equal(TestConstants.checksumStep4))
             }
         }
@@ -252,44 +252,44 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
                 var stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
-                print("7 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("7 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 var checksumHash: Array<UInt8> = Array(repeating: 0, count: 64)
-                print("8 🧔🏻 checksumHash: \(checksumHash.stringify)")
+                print("8 🪙 checksumHash: \(checksumHash.stringify)")
                 
                 SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
-                print("9 🧔🏻 checksumHash: \(checksumHash.stringify))")
-                print("10 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("9 🪙 checksumHash: \(checksumHash.stringify))")
+                print("10 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
-                let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue) as! String
-                print("11 🧔🏻 checksumText: \(checksumText)")
+                let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue)! as String
+                print("11 🪙 checksumText: \(checksumText)")
                 
-                var checksumBuffer = checksumText.asByteArray()
-                print("12 🧔🏻 checksumBuffer: \(checksumBuffer.reduce("", { $0 + ", \($1)" }))")
+                let checksumBuffer = checksumText.asByteArray()
+                print("12 🪙 checksumBuffer: \(checksumBuffer.reduce("", { $0 + ", \($1)" }))")
                 
                 var checksum = Array<UInt8>()
                 checksum.append(checksumBuffer[0])
-                print("13 🧔🏻 checksum: \(checksum.stringify)")
+                print("13 🪙 checksum: \(checksum.stringify)")
                 
                 checksum.append(checksumBuffer[1])
-                print("14 🧔🏻 checksum: \(checksum.stringify)")
+                print("14 🪙 checksum: \(checksum.stringify)")
                 
                 checksum.append(checksumBuffer[2])
-                print("15 🧔🏻 checksum: \(checksum.stringify)")
+                print("15 🪙 checksum: \(checksum.stringify)")
                 
                 checksum.append(checksumBuffer[3])
-                print("16 🧔🏻 checksum: \(checksum.stringify)")
+                print("16 🪙 checksum: \(checksum.stringify)")
                 
                 let stepFourResultBuffer = stepThreeVersionPrefixedRipemd160Buffer + checksum
-                print("17 🧔🏻 stepFourResultBuffer: \(stepFourResultBuffer.stringify)")
+                print("17 🪙 stepFourResultBuffer: \(stepFourResultBuffer.stringify)")
                 
                 expect(stepFourResultBuffer).to(equal(TestConstants.stepFourResultBuffer))
             }
@@ -306,47 +306,47 @@ final class AddressGenerationTests : QuickSpec {
                 let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
                 
                 let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
-                print("5 🧔🏻 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
+                print("5 🪙 stepTwoRIPEMD160Buffer: \(stepTwoRIPEMD160Buffer.stringify)")
                 
                 
                 var version = Array<UInt8>()
                 version.append(Constants.activeNetwork)
-                print("6 🧔🏻 version: \(version.stringify)")
+                print("6 🪙 version: \(version.stringify)")
                 
                 var stepThreeVersionPrefixedRipemd160Buffer = version + stepTwoRIPEMD160Buffer
-                print("7 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("7 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
                 var checksumHash: Array<UInt8> = Array(repeating: 0, count: 64)
-                print("8 🧔🏻 checksumHash: \(checksumHash.stringify)")
+                print("8 🪙 checksumHash: \(checksumHash.stringify)")
                 
                 SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
-                print("9 🧔🏻 checksumHash: \(checksumHash.stringify))")
-                print("10 🧔🏻 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
+                print("9 🪙 checksumHash: \(checksumHash.stringify))")
+                print("10 🪙 stepThreeVersionPrefixedRipemd160Buffer: \(stepThreeVersionPrefixedRipemd160Buffer.stringify)")
                 
-                let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue) as! String
-                print("11 🧔🏻 checksumText: \(checksumText)")
+                let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue)! as String
+                print("11 🪙 checksumText: \(checksumText)")
                 
-                var checksumBuffer = checksumText.asByteArray()
-                print("12 🧔🏻 checksumBuffer: \(checksumBuffer.reduce("", { $0 + ", \($1)" }))")
+                let checksumBuffer = checksumText.asByteArray()
+                print("12 🪙 checksumBuffer: \(checksumBuffer.reduce("", { $0 + ", \($1)" }))")
                 
                 var checksum = Array<UInt8>()
                 checksum.append(checksumBuffer[0])
-                print("13 🧔🏻 checksum: \(checksum.stringify)")
+                print("13 🪙 checksum: \(checksum.stringify)")
                 
                 checksum.append(checksumBuffer[1])
-                print("14 🧔🏻 checksum: \(checksum.stringify)")
+                print("14 🪙 checksum: \(checksum.stringify)")
                 
                 checksum.append(checksumBuffer[2])
-                print("15 🧔🏻 checksum: \(checksum.stringify)")
+                print("15 🪙 checksum: \(checksum.stringify)")
                 
                 checksum.append(checksumBuffer[3])
-                print("16 🧔🏻 checksum: \(checksum.stringify)")
+                print("16 🪙 checksum: \(checksum.stringify)")
                 
                 let stepFourResultBuffer = stepThreeVersionPrefixedRipemd160Buffer + checksum
-                print("17 🧔🏻 stepFourResultBuffer: \(stepFourResultBuffer.stringify)")
+                print("17 🪙 stepFourResultBuffer: \(stepFourResultBuffer.stringify)")
                 
                 let address = Base32Encode(Data(bytes: stepFourResultBuffer, count: stepFourResultBuffer.count))
-                print("18 🧔🏻 address: \(address)")
+                print("18 🪙 address: \(address)")
                 expect(address).to(equal(TestConstants.address))
             }
         }

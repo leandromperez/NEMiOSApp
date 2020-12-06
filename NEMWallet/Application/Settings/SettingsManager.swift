@@ -123,15 +123,8 @@ final class SettingsManager {
         - Parameter applicationPassword: The authentication password that should get set for the application.
      */
     public func setApplicationPassword(applicationPassword: String) {
-        
-        let salt = authenticationSalt()
-        let saltData = salt != nil ? NSData(bytes: salt!.asByteArray(), length: salt!.asByteArray().count) : NSData().generateRandomIV(32) as NSData
-        let passwordHash = try! HashManager.generateAesKeyForString(applicationPassword, salt: saltData, roundCount: 2000)!
-        
-        setAuthenticationSalt(authenticationSalt: saltData.hexadecimalString())
         setSetupStatus(setupDone: true)
-        
-        keychain.set(passwordHash.hexadecimalString(), forKey: "applicationPassword")
+        keychain.set(applicationPassword, forKey: "applicationPassword")
     }
     
     /**
@@ -139,11 +132,8 @@ final class SettingsManager {
      
         - Returns: The current authentication password of the application.
      */
-    public func applicationPassword() -> String {
-        
-        let applicationPassword = keychain.get("applicationPassword") ?? String()
-        
-        return applicationPassword
+    public func applicationPassword() -> String? {
+        return keychain.get("applicationPassword")
     }
     
     /**

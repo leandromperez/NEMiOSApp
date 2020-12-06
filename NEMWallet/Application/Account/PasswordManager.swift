@@ -14,6 +14,13 @@ class PasswordManager {
     var setAuthenticationSalt : (String) -> Void
     var setApplicationPassword : (String) -> Void
     
+    static var shared : PasswordManager = {
+        PasswordManager(applicationPassword: SettingsManager.sharedInstance.applicationPassword,
+                       authorizationSalt: SettingsManager.sharedInstance.authenticationSalt,
+                       setApplicationPassword: SettingsManager.sharedInstance.setApplicationPassword(applicationPassword:),
+                       setAuthenticationSalt: SettingsManager.sharedInstance.setAuthenticationSalt(authenticationSalt:))
+    }()
+    
     init(applicationPassword: @escaping () -> String?,
          authorizationSalt: @escaping () -> String?,
          setApplicationPassword: @escaping (String) -> Void,

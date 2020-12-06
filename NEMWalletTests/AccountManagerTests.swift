@@ -17,7 +17,8 @@ final class AccountManagerTests : QuickSpec {
         
         describe("account manager") {
             it("decrypts correctly") {
-                let decrypted = AccountManager.sharedInstance.decryptPrivateKey(encryptedPrivateKey: TestConstants.encriptedPrivateKey)
+                
+                let decrypted = AccountManager.sharedInstance.decryptPrivateKey(encryptedPrivateKey: TestConstants.encriptedPrivateKey, applicationPassword: {TestConstants.applicationPassword})
                 expect(decrypted).to(equal(TestConstants.privateKey))
             }
         }
