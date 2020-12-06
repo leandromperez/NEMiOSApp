@@ -116,7 +116,7 @@ final class AccountAdditionMenuAddExistingAccountPrivateKeyViewController: UIVie
         do {
             let _ = try validateEntries()
             
-            AccountManager.sharedInstance.create(account: accountTitle, withPrivateKey: accountPrivateKey, completion: { [unowned self] (result, _) in
+            AccountManager.sharedInstance.createAccount(title: accountTitle, privateKey: accountPrivateKey, completion: { [unowned self] (result, _) in
                 
                 switch result {
                 case .success:

@@ -17,6 +17,7 @@ open class Account: NSManagedObject {
     @NSManaged var title: String
     
     /// The address of the account.
+    /// - Each account has a unique address. First letter of an address indicate the network the account belongs to. Currently two networks are defined: the test network whose account addresses start with a capital T and the main network whose account addresses always start with a capital N. Addresses have always a length of 40 characters and are base-32 encoded.
     @NSManaged var address: String
     
     /// The public key of the account.

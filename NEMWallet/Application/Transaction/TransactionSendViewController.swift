@@ -227,7 +227,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                     }
                 }
                 
@@ -268,7 +268,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         self?.showAlert(withMessage: "TRANSACTION_ANOUNCE_FAILED".localized())
                         self?.sendingTransaction = false
@@ -323,7 +323,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         self?.showAlert(withMessage: errorMessage)
                     }
                     
@@ -331,7 +331,7 @@ final class TransactionSendViewController: UIViewController, UIScrollViewDelegat
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         self?.showAlert(withMessage: "TRANSACTION_ANOUNCE_FAILED".localized())
                     }
                 }
@@ -694,3 +694,4 @@ extension TransactionSendViewController: UINavigationBarDelegate {
         return .topAttached
     }
 }
+

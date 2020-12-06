@@ -95,7 +95,9 @@ final class AccountAdditionMenuPasswordValidationViewController: UIViewControlle
         do {
             let _ = try verifyPassword()
             
-            AccountManager.sharedInstance.create(account: accountTitle, withPrivateKey: accountPrivateKey, completion: { [unowned self] (result, _) in
+            AccountManager.sharedInstance.createAccount(title: accountTitle,
+                                                        privateKey: accountPrivateKey,
+                                                        completion: { [unowned self] (result, _) in
                 
                 switch result {
                 case .success:

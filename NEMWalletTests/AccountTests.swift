@@ -23,7 +23,7 @@ final class AccountTests: QuickSpec {
                 
                 beforeSuite {
                     waitUntil { done in
-                        AccountManager.sharedInstance.create(account: "Newly generated account", completion: { (result, createdAccount) in
+                        AccountManager.sharedInstance.createAccount(title: "Newly generated account", completion: { (result, createdAccount) in
                             
                             accounts = AccountManager.sharedInstance.accounts()
                             generatedAccount = createdAccount!
@@ -46,7 +46,6 @@ final class AccountTests: QuickSpec {
                     
                     let networkPrefix = Constants.activeNetwork == Constants.testNetwork ? "T" : "N"
                     expect(accounts[generatedAccountIndex].address).to(beginWith(networkPrefix))
-                    print("😅\(accounts[generatedAccountIndex].address)")
                     expect(accounts[generatedAccountIndex].address.count).to(equal(40))
                 }
                 
@@ -70,14 +69,17 @@ final class AccountTests: QuickSpec {
                 
                 beforeSuite {
                     waitUntil { done in
-                        AccountManager.sharedInstance.create(account: "Newly imported account", withPrivateKey: "4846c7752fe1f4ce151224d2ca9b9d38411631cea1a3a87169b35e9058bc729a", completion: { (result, createdAccount) in
-                            
-                            accounts = AccountManager.sharedInstance.accounts()
-                            importedAccount = createdAccount!
-                            importedAccountIndex = accounts.firstIndex(of: createdAccount!)!
-                            
-                            done()
-                        })
+                        let manager = AccountManager.sharedInstance
+                        manager.createAccount(title: "Newly imported account",
+                                              privateKey: "4846c7752fe1f4ce151224d2ca9b9d38411631cea1a3a87169b35e9058bc729a",
+                                              completion: { (result, createdAccount) in
+                                                
+                                                accounts = manager.accounts()
+                                                importedAccount = createdAccount!
+                                                importedAccountIndex = accounts.firstIndex(of: createdAccount!)!
+                                                
+                                                done()
+                                              })
                     }
                 }
                 

@@ -307,7 +307,7 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                     }
                 }
                 
@@ -352,7 +352,7 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                     }
                 }
                 
@@ -424,7 +424,7 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         self?.correspondentTransactionsDispatchGroup.leave()
                     }
@@ -500,7 +500,7 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         self?.correspondentTransactionsDispatchGroup.leave()
                     }
@@ -565,7 +565,7 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         self?.showAlert(withMessage: errorMessage)
                     }
                     
@@ -573,7 +573,7 @@ final class TransactionMessagesViewController: UIViewController, UIAlertViewDele
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         self?.showAlert(withMessage: "TRANSACTION_ANOUNCE_FAILED".localized())
                     }
                 }
@@ -1129,3 +1129,5 @@ extension TransactionMessagesViewController: AccountChooserDelegate {
         updateInfoHeaderLabel(withAccountData: activeAccountData)
     }
 }
+
+

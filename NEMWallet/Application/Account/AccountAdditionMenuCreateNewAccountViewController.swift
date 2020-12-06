@@ -66,7 +66,7 @@ final class AccountAdditionMenuCreateNewAccountViewController: UIViewController 
         do {
             let _ = try validate(enteredInformation: title)
             
-            AccountManager.sharedInstance.create(account: title, completion: { [unowned self] (result, _) in
+            AccountManager.sharedInstance.createAccount(title: title, completion: { [unowned self] (result, _) in
                                 
                 switch result {
                 case .success:

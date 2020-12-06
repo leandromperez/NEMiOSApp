@@ -2,12 +2,37 @@
 import UIKit
 
 
+
+extension Array where Element == UInt8 {
+    
+    public func toHexString() -> String {
+        `lazy`.reduce(into: "") {
+            var s = String($1, radix: 16)
+            if s.count == 1 {
+                s = "0" + s
+            }
+            $0 += s
+        }
+    }
+    
+    var data : Data{
+        return Data(self)
+    }
+}
+
+extension Data {
+    
+    public var bytes: Array<UInt8> {
+        Array(self)
+    }
+}
+
 class HashManager: NSObject
 {
     final class func AES256Encrypt(inputText :String ,key :String) -> String {
         let messageBytes = inputText.asByteArray()
         var messageData = NSData(bytes: messageBytes, length: messageBytes.count)
-
+        
         let ivData = NSData().generateRandomIV(16)
         messageData = messageData.aesEncrypt(key: key.asByteArray(), iv: ivData!.bytes)!
         
@@ -30,7 +55,7 @@ class HashManager: NSObject
         let len :Int32 = Int32(inBuffer.count)
         SHA256_hash(&outBuffer, &inBuffer, len)
         
-        let hash : String = NSString(bytes: outBuffer, length: outBuffer.count, encoding: String.Encoding.utf8.rawValue)! as String
+        let hash :String = NSString(bytes: outBuffer, length: outBuffer.count, encoding: String.Encoding.utf8.rawValue)! as String
         
         return hash
     }
@@ -48,14 +73,14 @@ class HashManager: NSObject
         let prf:       CCPseudoRandomAlgorithm = CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1)
         let saltBytes  = salt.bytes
         let saltLength = size_t(salt.length)
-
+        
         let nsPassword        = string as NSString
         let nsPasswordPointer = UnsafePointer<Int8>(nsPassword.cString(using: String.Encoding.utf8.rawValue))
         let nsPasswordLength  = size_t(nsPassword.lengthOfBytes(using: String.Encoding.utf8.rawValue))
-
+        
         let nsDerivedKeyPointer = nsDerivedKey!.mutableBytes
         let nsDerivedKeyLength = size_t(nsDerivedKey!.length)
-
+        
         let msec: UInt32 = 300
         
         if roundCount != nil {

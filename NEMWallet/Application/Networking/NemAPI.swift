@@ -18,7 +18,7 @@ let NEMProvider = MoyaProvider<NEM>(endpointClosure: { (target: NEM) -> Endpoint
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
     let endpoint: Endpoint = Endpoint(url: url, sampleResponseClosure: { .networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
     return endpoint
-})
+},plugins: [NetworkLoggerPlugin()])
 
 // MARK: - Networking Routes
 
@@ -111,4 +111,8 @@ extension NEM: TargetType {
             return "{\"data\":[]}".UTF8EncodedData as Data
         }
     }
+}
+
+func printFailure( response: Moya.Response) {
+    print("Failure: \(response.statusCode)")
 }

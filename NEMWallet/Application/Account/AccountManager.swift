@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreStore
-import CryptoSwift
 
 /**
     The account manager singleton used to perform all kinds of actions in relationship with an account. 
@@ -48,7 +47,10 @@ final class AccountManager {
      
         - Returns: The result of the operation - success or failure as well as the newly created account.
      */
-    public func create(account title: String, withPrivateKey privateKey: String? = AccountManager.sharedInstance.generatePrivateKey(), completion: @escaping (_ result: Result, _ account: Account?) -> Void) {
+    public func createAccount(title: String,
+                              publicKeyGenerator : (String) -> String = KeyGenerator().generatePublicKey(fromPrivateKey:),
+                              privateKey: String? = KeyGenerator().generatePrivateKey(),
+                              completion: @escaping (_ result: Result, _ account: Account?) -> Void) {
 
         //lmp: moved this line out of the async block, because it was ran in a sec thread, causing an assertion to throw, requiring it to be in the main thread.
         let newAccountPosition = self.positionForNewAccount() as NSNumber
@@ -118,8 +120,9 @@ final class AccountManager {
             asynchronous: { (transaction) -> Void in
             
                 for account in accounts {
-                    let editableAccount = transaction.edit(account)!
-                    editableAccount.position = accounts.firstIndex(of: account)! as NSNumber
+                    if let editableAccount = transaction.edit(account), let position = accounts.firstIndex(of: account) {
+                        editableAccount.position =  position as NSNumber
+                    }
                 }
             },
             success: {
@@ -286,7 +289,8 @@ final class AccountManager {
         
         SHA256_hash(&stepOneSHA256, &inBuffer, 32)
         
-        let stepOneSHA256Text = NSString(bytes: stepOneSHA256, length: stepOneSHA256.count, encoding: String.Encoding.utf8.rawValue)! as String
+        let stepOneSHA256Text = String(bytes: stepOneSHA256, encoding: .utf8)! // NSString(bytes: stepOneSHA256, length: stepOneSHA256.count, encoding: String.Encoding.utf8.rawValue)! as String
+        
         let stepTwoRIPEMD160Text = RIPEMD.hexStringDigest(stepOneSHA256Text) as String
         let stepTwoRIPEMD160Buffer = stepTwoRIPEMD160Text.asByteArray()
         
@@ -298,7 +302,7 @@ final class AccountManager {
         
         SHA256_hash(&checksumHash, &stepThreeVersionPrefixedRipemd160Buffer, 21)
         
-        let checksumText = NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue)! as String
+        let checksumText = String(bytes: checksumHash, encoding: .utf8)!// NSString(bytes: checksumHash, length: checksumHash.count, encoding: String.Encoding.utf8.rawValue)! as String
         let checksumBuffer = checksumText.asByteArray()
         var checksum = Array<UInt8>()
         checksum.append(checksumBuffer[0])

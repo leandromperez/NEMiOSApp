@@ -230,7 +230,7 @@ final class SettingsServerViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         return completion(.failure)
                     }
                 }

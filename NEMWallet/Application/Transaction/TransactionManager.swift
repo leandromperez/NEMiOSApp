@@ -182,7 +182,7 @@ final class TransactionManager {
         let senderPrivateKey = AccountManager.sharedInstance.decryptPrivateKey(encryptedPrivateKey: senderEncryptedPrivateKey)
         
         let saltData = NSData().generateRandomIV(32)
-        var saltByteArray: Array<UInt8> = saltData!.bytes //lmp: it used to be Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(saltData!.bytes), count: saltData!.count))
+        var saltByteArray: Array<UInt8> = Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(saltData!.bytes), count: saltData!.count))
         
         var sharedSecretByteArray: [UInt8] = Array(repeating: 0, count: 32)
         var senderPrivateKeyByteArray: Array<UInt8> = senderPrivateKey.asByteArrayEndian(32)
@@ -194,7 +194,7 @@ final class TransactionManager {
         var messageData = NSData(bytes: &messageByteArray, length: messageByteArray.count)
         
         let ivData = NSData().generateRandomIV(16)
-        let customizedIVByteArray: Array<UInt8> = ivData!.bytes //lmp: it used to be Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(ivData!.bytes), count: ivData!.count))
+        let customizedIVByteArray: Array<UInt8> = Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(ivData!.bytes), count: ivData!.count))
         messageData = messageData.aesEncrypt(key: sharedSecretByteArray, iv: customizedIVByteArray)!
         var encryptedByteArray: Array<UInt8> = Array(repeating: 0, count: messageData.length)
         messageData.getBytes(&encryptedByteArray, length: messageData.length)

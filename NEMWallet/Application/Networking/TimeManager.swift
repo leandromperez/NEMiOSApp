@@ -74,7 +74,7 @@ final class TimeManager {
                 } catch {
                     
                     DispatchQueue.main.async {
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                     }
                 }
                 

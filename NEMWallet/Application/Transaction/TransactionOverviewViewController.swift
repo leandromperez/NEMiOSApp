@@ -270,7 +270,7 @@ final class TransactionOverviewViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         self?.transactionOverviewDispatchGroup.leave()
                     }
@@ -352,7 +352,7 @@ final class TransactionOverviewViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
 
                         self?.transactionOverviewDispatchGroup.leave()
                     }
@@ -485,7 +485,7 @@ final class TransactionOverviewViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         self?.transactionOverviewDispatchGroup.leave()
                     }

@@ -50,6 +50,7 @@ final class InvoiceManager {
      */
     public func createInvoice(withAccountTitle accountTitle: String, andAccountAddress accountAddress: String, andAmount amount: Int, andMessage message: String, completion: @escaping (_ result: Result, _ invoice: Invoice?) -> Void) {
         
+        let newId = self.idForNewInvoice() as NSNumber
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Invoice in
             
@@ -58,7 +59,7 @@ final class InvoiceManager {
                 invoice.accountAddress = accountAddress
                 invoice.amount = amount as NSNumber
                 invoice.message = message
-                invoice.id = self.idForNewInvoice() as NSNumber
+                invoice.id = newId
                 
                 return invoice
             },

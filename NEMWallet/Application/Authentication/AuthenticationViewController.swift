@@ -81,6 +81,7 @@ final class AuthenticationViewController: UIViewController {
         
         let passwordData: NSData? = try? HashManager.generateAesKeyForString(passwordText, salt: saltData, roundCount: 2000)
         
+        //TODO: lmp restore/uncomment
         if passwordData?.toHexString() == encryptedPassword {
             authenticationSuccessful()
         } else {

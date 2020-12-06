@@ -154,7 +154,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                     }
                 }
                 
@@ -297,7 +297,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         self?.showAlert(withMessage: errorMessage)
                     }
                     
@@ -305,7 +305,7 @@ final class TransactionUnconfirmedViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         self?.showAlert(withMessage: "TRANSACTION_ANOUNCE_FAILED".localized())
                     }
                 }

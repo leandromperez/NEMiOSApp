@@ -1,5 +1,4 @@
 import UIKit
-import CryptoSwift
 
 extension String {
     
@@ -48,26 +47,6 @@ extension String {
             let substring :String = (hexString as NSString).substring(with: NSRange(location: 2 * index, length: 2))
             buffer[index] = UInt8(substring, radix: 16)!
         }
-        return buffer
-    }
-    
-    func asByteArray(_ length: Int)-> Array<UInt8> {
-        var arrayLength :Int = self.utf16.count
-        var hexString = self
-        
-        if arrayLength % 2 != 0 {
-            hexString  = "0" + hexString
-            arrayLength += 1
-        }
-        
-        arrayLength = arrayLength / 2
-        
-        var buffer : Array<UInt8> = Array(repeating: 0 , count: length)
-        for index :Int in 0  ..< arrayLength  {
-            let substring :String = (hexString as NSString).substring(with: NSRange(location: 2 * index, length: 2))
-            buffer[index] = UInt8(substring, radix: 16)!
-        }
-        
         return buffer
     }
     

@@ -168,7 +168,7 @@ final class NotificationManager {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         return completion(.failure)
                     }
                 }
@@ -361,7 +361,7 @@ final class NotificationManager {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         return completion(.failure, [Transaction]())
                     }
@@ -422,7 +422,7 @@ final class NotificationManager {
                     
                     DispatchQueue.main.async {
                         
-                        print("Failure: \(response.statusCode)")
+                        printFailure(response: response)
                         
                         return completion(.failure, [Transaction]())
                     }

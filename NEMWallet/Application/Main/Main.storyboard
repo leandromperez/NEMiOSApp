@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ydb-yw-KoU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ydb-yw-KoU">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,6 +96,7 @@
                             <constraint firstItem="jcA-ak-6sQ" firstAttribute="top" secondItem="Kfl-7c-kdl" secondAttribute="bottom" id="yJL-kJ-VUj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3aB-K6-HKF"/>
                     <connections>
                         <outlet property="accountTitleTextField" destination="2gH-SB-ECh" id="DrW-Ub-wdL"/>
                         <outlet property="contentView" destination="KZ4-Jg-l4J" id="BGI-0x-gEm"/>
@@ -112,7 +113,7 @@
         <!--Accounts-->
         <scene sceneID="jxn-DR-hqx">
             <objects>
-                <viewController storyboardIdentifier="WalletOverviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fuL-dy-CgF" customClass="WalletOverviewViewController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalletOverviewViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fuL-dy-CgF" customClass="WalletOverviewViewController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yZW-PF-4BR"/>
                         <viewControllerLayoutGuide type="bottom" id="Sdp-hS-RvE"/>
@@ -858,6 +859,7 @@
                             <constraint firstItem="LJ6-Gw-YFj" firstAttribute="leading" secondItem="UCS-D9-uO2" secondAttribute="leading" id="yLq-BC-rNk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="E2d-i2-SGY"/>
                     <connections>
                         <outlet property="infoHeaderLabel" destination="Rhv-Qt-uPC" id="h7k-VM-1vb"/>
                         <outlet property="loadingActivityIndicator" destination="FGf-kw-ctv" id="XSV-cN-nv4"/>
@@ -998,6 +1000,7 @@
                             <constraint firstItem="SgJ-EN-6Ue" firstAttribute="top" secondItem="deq-Fi-qrg" secondAttribute="bottom" id="nFQ-ps-c2P"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="GJu-ZQ-bBx"/>
                     <connections>
                         <outlet property="qrCodeScannerView" destination="deq-Fi-qrg" id="OdO-F9-IZs"/>
                         <segue destination="La1-NU-unc" kind="presentation" identifier="showAccountAdditionMenuPasswordValidationViewController" id="3uE-D0-Yt9"/>
@@ -1125,6 +1128,7 @@
                             <constraint firstItem="boI-Qr-JAY" firstAttribute="top" secondItem="o5W-Ta-fJi" secondAttribute="bottom" id="r8d-56-Dgw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Jhk-v8-P87"/>
                     <connections>
                         <outlet property="accountPrivateKeyTextField" destination="E3i-du-bP5" id="keF-uK-DLe"/>
                         <outlet property="accountTitleTextField" destination="OR6-4X-8Oc" id="KKz-nd-iFB"/>
@@ -1350,6 +1354,7 @@
                             <constraint firstItem="cA7-lU-Dav" firstAttribute="leading" secondItem="j5P-ls-g3Q" secondAttribute="leading" id="zYi-HT-gDB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ZUQ-8Y-Kba"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="accountBalanceLabel" destination="h9H-nb-nHx" id="YDe-Xx-VLl"/>
@@ -1403,6 +1408,7 @@
         <scene sceneID="3Wy-vv-zRB">
             <objects>
                 <tabBarController storyboardIdentifier="AccountDetailTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ggV-JV-QFS" customClass="AccountDetailTabBarController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ORt-O8-RDQ"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="uGo-Nc-WKL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1423,7 +1429,7 @@
         <!--Password-->
         <scene sceneID="pwb-LT-zO9">
             <objects>
-                <viewController storyboardIdentifier="AuthenticationViewController" title="Password" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EY9-DV-SIG" customClass="AuthenticationViewController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthenticationViewController" title="Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EY9-DV-SIG" customClass="AuthenticationViewController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PUW-VR-qKs"/>
                         <viewControllerLayoutGuide type="bottom" id="dEJ-x5-enl"/>
@@ -1526,13 +1532,13 @@
                         <outlet property="passwordHeadingLabel" destination="r5Y-eE-3AI" id="bdD-VM-hFb"/>
                         <outlet property="passwordTextField" destination="iGs-fu-HLj" id="3we-Gw-HqF"/>
                         <segue destination="q3r-rG-oqN" kind="unwind" identifier="unwindToAccountMainViewController" unwindAction="unwindToMenu:" id="RZR-El-hDo"/>
-                        <segue destination="Ydb-yw-KoU" kind="presentation" identifier="showRootNavigationController" id="mvO-E7-NF4"/>
+                        <segue destination="Ydb-yw-KoU" kind="showDetail" identifier="showRootNavigationController" id="mvO-E7-NF4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FB-KR-Ydq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="q3r-rG-oqN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2420" y="-1401.049475262369"/>
+            <point key="canvasLocation" x="-3282" y="-2400"/>
         </scene>
         <!--Password-->
         <scene sceneID="8yh-VY-CRr">
@@ -2403,6 +2409,7 @@
                             <constraint firstAttribute="trailing" secondItem="xhP-EB-cRK" secondAttribute="trailing" id="zvA-Av-PYm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="eyp-9t-GIG"/>
                     <connections>
                         <outlet property="infoHeaderLabel" destination="DYw-sj-Qdx" id="bnJ-cT-KR0"/>
                         <outlet property="loadingActivityIndicator" destination="8ec-9K-EEF" id="LHL-RO-5HO"/>
@@ -2896,6 +2903,7 @@
                             <constraint firstAttribute="trailing" secondItem="xrv-pU-ohe" secondAttribute="trailing" id="oqj-ha-ypk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QD0-Th-fGS"/>
                     <connections>
                         <outlet property="addServerButton" destination="6Nf-6g-iCM" id="nvd-h4-dmA"/>
                         <outlet property="tableView" destination="xrv-pU-ohe" id="QLt-VS-DqZ"/>
@@ -3188,6 +3196,7 @@
                             <constraint firstItem="LXK-Ld-bi3" firstAttribute="leading" secondItem="8Rc-zV-jvT" secondAttribute="leadingMargin" constant="19" id="ykY-7n-vZT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="RoQ-wf-YUy"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -4418,7 +4427,7 @@
         <!--Password-->
         <scene sceneID="ZUr-Yr-E9Y">
             <objects>
-                <viewController storyboardIdentifier="AuthenticationPasswordCreationViewController" title="Password" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SYo-Zz-lR0" customClass="AuthenticationPasswordCreationViewController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthenticationPasswordCreationViewController" title="Password" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SYo-Zz-lR0" customClass="AuthenticationPasswordCreationViewController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gf8-3L-9WN"/>
                         <viewControllerLayoutGuide type="bottom" id="8QP-qN-CrJ"/>
@@ -4547,20 +4556,20 @@
                         <outlet property="containerView" destination="Q5G-qK-dQs" id="zuY-Lw-dgw"/>
                         <outlet property="passwordHeadingLabel" destination="Y23-xg-zjP" id="hUj-ev-4Lr"/>
                         <outlet property="passwordTextField" destination="lwi-XI-c8T" id="YnP-Q7-46n"/>
-                        <segue destination="Ydb-yw-KoU" kind="presentation" identifier="showRootNavigationController" id="fSS-ga-PuM"/>
+                        <segue destination="Ydb-yw-KoU" kind="showDetail" identifier="showRootNavigationController" id="fSS-ga-PuM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9BL-5R-KSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1682.4000000000001" y="-1401.049475262369"/>
+            <point key="canvasLocation" x="-1577" y="-2203"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kos-lU-fgG">
             <objects>
-                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ydb-yw-KoU" customClass="NavigationController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ydb-yw-KoU" customClass="NavigationController" customModule="NEMWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j2h-tZ-0az">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.35294117650000001" green="0.70196078429999997" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4787,7 +4796,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="XB4-9L-SAu"/>
-        <segue reference="mvO-E7-NF4"/>
+        <segue reference="fSS-ga-PuM"/>
         <segue reference="oIs-42-LtM"/>
         <segue reference="Iy1-h5-Od4"/>
     </inferredMetricsTieBreakers>
