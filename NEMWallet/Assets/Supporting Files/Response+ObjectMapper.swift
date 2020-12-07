@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Moya
 import SwiftyJSON
-import ObjectMapper
+import Moya
 
 public protocol SwiftyJSONMappable {
     init?(jsonData:JSON)

@@ -9,7 +9,7 @@ import UIKit
 import SwiftyJSON
 
 /// The view controller that lets the user sign unconfirmed transactions.
-final class TransactionUnconfirmedViewController: UIViewController {
+class TransactionUnconfirmedViewController: UIViewController {
     
     // MARK: - View Controller Properties
     

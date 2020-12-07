@@ -8,7 +8,7 @@
 import UIKit
 
 /// The table view cell that lets the user edit the minimum amount of cosignatories needed to sign a transaction.
-final class MultisigMinimumCosignatoriesTableViewCell: UITableViewCell {
+class MultisigMinimumCosignatoriesTableViewCell: UITableViewCell {
     
     // MARK: - Cell Outlets
     

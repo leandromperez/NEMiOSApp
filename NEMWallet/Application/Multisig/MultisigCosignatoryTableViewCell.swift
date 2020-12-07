@@ -8,7 +8,7 @@
 import UIKit
 
 /// The table view cell that represents a multisig cosignatory.
-final class MultisigCosignatoryTableViewCell: UITableViewCell {
+class MultisigCosignatoryTableViewCell: UITableViewCell {
     
     // MARK: - Cell Properties
     

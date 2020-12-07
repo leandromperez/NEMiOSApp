@@ -8,7 +8,7 @@
 import UIKit
 
 /// The view controller that lets the user set/create the application password.
-final class AuthenticationPasswordCreationViewController: UIViewController {
+class AuthenticationPasswordCreationViewController: UIViewController {
     
     // MARK: - View Controller Outlets
     

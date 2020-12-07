@@ -8,7 +8,7 @@
 import UIKit
 
 /// The view controller that lets the user perform settings changes.
-final class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController {
     
     // MARK: - View Controller Outlets
     

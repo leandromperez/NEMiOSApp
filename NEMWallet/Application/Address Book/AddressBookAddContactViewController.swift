@@ -9,7 +9,7 @@ import UIKit
 import Contacts
 
 /// The view controller that lets the user add a new contact to the address book.
-final class AddressBookAddContactViewController: UITableViewController {
+class AddressBookAddContactViewController: UITableViewController {
 
     // MARK: - View Controller Outlets
     

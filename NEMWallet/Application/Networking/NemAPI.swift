@@ -11,8 +11,8 @@ import Moya
 // MARK: - Networking Provider
 
 /**
-    The application uses the dependency 'Moya' for all network requests.
-    See the official [documentation](https://github.com/Moya/Moya) on how it works.
+ The application uses the dependency 'Moya' for all network requests.
+ See the official [documentation](https://github.com/Moya/Moya) on how it works.
  */
 let NEMProvider = MoyaProvider<NEM>(endpointClosure: { (target: NEM) -> Endpoint<NEM> in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString

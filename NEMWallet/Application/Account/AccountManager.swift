@@ -52,6 +52,7 @@ final class AccountManager {
     public func create(account title: String, withPrivateKey privateKey: String? = AccountManager.sharedInstance.generatePrivateKey(), completion: @escaping (_ result: Result, _ account: Account?) -> Void) {
 
         
+        let position = self.positionForNewAccount() as NSNumber
         DatabaseManager.sharedInstance.dataStack.perform(
             asynchronous: { (transaction) -> Account in
                 
@@ -60,18 +61,18 @@ final class AccountManager {
                 account.publicKey = self.generatePublicKey(fromPrivateKey: privateKey!)
                 account.privateKey = self.encryptPrivateKey(privateKey!)
                 account.address = self.generateAddress(forPublicKey: account.publicKey)
-                account.position = self.positionForNewAccount() as NSNumber
+                account.position = position
                 
                 return account
-            },
+        },
             success: { (accountTransaction) in
                 
                 let account = DatabaseManager.sharedInstance.dataStack.fetchExisting(accountTransaction)!
                 return completion(.success, account)
-            },
+        },
             failure: { (error) in
                 return completion(.failure, nil)
-            }
+        }
         )
     }
     
@@ -117,8 +118,8 @@ final class AccountManager {
             asynchronous: { (transaction) -> Void in
             
                 for account in accounts {
-                    let editableAccount = transaction.edit(account)!
-                    editableAccount.position = accounts.index(of: account)! as NSNumber
+                    let editableAccount = transaction.edit(account)
+                    editableAccount?.position = accounts.index(of: account)! as NSNumber
                 }
             },
             success: {
@@ -402,5 +403,11 @@ final class AccountManager {
         let publicKey = Data(bytes: publicKeyBytes).toHexadecimalString()
         
         return publicKey.nemKeyNormalized()!
+    }
+}
+
+extension Array {
+    var stringify : String {
+        return "[" + reduce("", { $0 + ", \($1)" }).dropFirst(2) + "]"
     }
 }

@@ -43,7 +43,7 @@
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow access to your photo library to save QR code images</string>
 	<key>UIBackgroundModes</key>
 	<array>

@@ -8,7 +8,7 @@
 import UIKit
 
 /// The table view cell that represents an unconfirmed multisig transaction.
-final class TransactionUnconfirmedTableViewCell: UITableViewCell {
+class TransactionUnconfirmedTableViewCell: UITableViewCell {
     
     // MARK: - Cell Properties
     

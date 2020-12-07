@@ -9,7 +9,7 @@ import UIKit
 import Contacts
 
 /// The table view cell that represents a contact in the address book.
-final class AddressBookContactTableViewCell: UITableViewCell {
+class AddressBookContactTableViewCell: UITableViewCell {
     
     // MARK: - Cell Properties
     

@@ -1,0 +1,65 @@
+PODS:
+  - Alamofire (4.5.1)
+  - AlamofireNetworkActivityIndicator (2.2.0):
+    - Alamofire (~> 4.5)
+  - CoreStore (4.2.3)
+  - CryptoSwift (0.7.0)
+  - KeychainSwift (8.0.3)
+  - Moya (9.0.0):
+    - Moya/Core (= 9.0.0)
+  - Moya/Core (9.0.0):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Nimble (7.3.4)
+  - Quick (1.3.4)
+  - Result (3.2.4)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (= 4.5.1)
+  - AlamofireNetworkActivityIndicator (~> 2.0)
+  - CoreStore (= 4.2.3)
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift.git`, branch `swift32`)
+  - KeychainSwift (~> 8.0)
+  - Moya (= 9.0.0)
+  - Nimble (~> 7.0)
+  - Quick (~> 1.3)
+  - SwiftyJSON (= 3.1.4)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireNetworkActivityIndicator
+    - CoreStore
+    - KeychainSwift
+    - Moya
+    - Nimble
+    - Quick
+    - Result
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  CryptoSwift:
+    :branch: swift32
+    :git: https://github.com/krzyzanowskim/CryptoSwift.git
+
+CHECKOUT OPTIONS:
+  CryptoSwift:
+    :commit: 036edc3f858f9a7d9db765688418ea55be64e941
+    :git: https://github.com/krzyzanowskim/CryptoSwift.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
+  CoreStore: ae8ead0cce4d8120d9f353f9dbc12482b1584b2e
+  CryptoSwift: 47c539f7f73369cdd623942bfe4e4eeb56dfc3e7
+  KeychainSwift: be9554c0e5f4b1686c775930dc5c6bd9396992ed
+  Moya: cf5e6ee93af526532f92614004b8ad2ea60fd845
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Quick: f4f7f063c524394c73ed93ac70983c609805d481
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: fbc1a691c6050e8a5dc01fad97a76f92ad398f82
+
+COCOAPODS: 1.10.0

@@ -11,7 +11,7 @@ import UIKit
     The view controller that shows the export account QR code and lets 
     the user show the public- and private key of the account.
  */
-final class AccountExportViewController: UIViewController {
+class AccountExportViewController: UIViewController {
     
     // MARK: - View Controller Properties
     

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class AutoCompleteTextField:UITextField {
+public class AutoCompleteTextField:UITextField {
     
     /// Manages the instance of tableview
     public var autoCompleteTableView:UITableView?

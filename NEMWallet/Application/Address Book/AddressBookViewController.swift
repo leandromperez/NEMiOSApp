@@ -13,7 +13,7 @@ import Contacts
     NEM account address. This view controller lets the user add new contacts or 
     send a transaction directly to a specific contact.
  */
-final class AddressBookViewController: UIViewController, UITextFieldDelegate {
+class AddressBookViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - View Controller Properties
     

@@ -32,7 +32,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     The view controller that shows all messages/transactions with the
     correspondent in detail.
  */
-final class TransactionMessagesViewController: UIViewController, UIAlertViewDelegate {
+class TransactionMessagesViewController: UIViewController, UIAlertViewDelegate {
     
     // MARK: - View Controller Properties
     

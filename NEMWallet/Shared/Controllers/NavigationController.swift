@@ -11,7 +11,7 @@ import UIKit
     Creates a navigation controller with the NEM specific
     appearance.
  */
-final class NavigationController: UINavigationController {
+class NavigationController: UINavigationController {
 
     // MARK: - Controller Lifecycle
     

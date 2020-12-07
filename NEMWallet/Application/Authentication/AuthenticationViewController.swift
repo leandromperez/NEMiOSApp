@@ -171,3 +171,42 @@ final class AuthenticationViewController: UIViewController {
         containerView.clipsToBounds = true
     }
 }
+
+class PasswordManager {
+    var applicationPassword : () -> String?
+    var authenticationSalt : () -> String?
+    var setAuthenticationSalt : (String) -> Void
+    var setApplicationPassword : (String) -> Void
+    
+    init(applicationPassword: @escaping () -> String?,
+         authorizationSalt: @escaping () -> String?,
+         setApplicationPassword: @escaping (String) -> Void,
+         setAuthenticationSalt: @escaping (String) -> Void) {
+    
+        self.applicationPassword = applicationPassword
+        self.authenticationSalt = authorizationSalt
+        self.setApplicationPassword = setApplicationPassword
+        self.setAuthenticationSalt = setAuthenticationSalt
+    }
+    
+    func check(applicationPassword: String) -> Bool {
+        guard let salt = authenticationSalt() else {return false}
+        guard let encryptedPassword = self.applicationPassword() else {return false}
+        
+        let saltData = NSData.fromHexString(salt)
+        let passwordData: NSData? = try! HashManager.generateAesKeyForString(applicationPassword, salt: saltData, roundCount: 2000)!
+        
+        return passwordData?.toHexString() == encryptedPassword
+    }
+    
+    func set(applicationPassword: String) {
+        let salt = authenticationSalt()
+        
+        let saltData = salt.flatMap{NSData(bytes: $0.asByteArray(), length: $0.asByteArray().count)} ?? NSData().generateRandomIV(32) as NSData
+        let passwordHash = try! HashManager.generateAesKeyForString(applicationPassword, salt: saltData, roundCount: 2000)!
+        
+        setAuthenticationSalt(saltData.hexadecimalString())
+        setApplicationPassword(passwordHash.hexadecimalString())
+    }
+    
+}

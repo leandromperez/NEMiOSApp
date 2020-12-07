@@ -33,7 +33,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     for the account that the user has chosen on the account list view
     controller.
  */
-final class TransactionOverviewViewController: UIViewController {
+class TransactionOverviewViewController: UIViewController {
     
     // MARK: - View Controller Properties
 

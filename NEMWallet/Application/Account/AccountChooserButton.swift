@@ -8,7 +8,7 @@
 import UIKit
 
 /// The button that shows the account chooser view controller when pressed.
-final class AccountChooserButton: UIButton {
+class AccountChooserButton: UIButton {
     
     // MARK: - Button Lifecycle
     

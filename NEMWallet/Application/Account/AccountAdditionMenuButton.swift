@@ -12,7 +12,7 @@ import UIKit
     account addition menu view controller and lets the user
     choose an action to perform.
  */
-final class AccountAdditionMenuButton: UIButton {
+class AccountAdditionMenuButton: UIButton {
     
     // MARK: - Button Lifecycle
     

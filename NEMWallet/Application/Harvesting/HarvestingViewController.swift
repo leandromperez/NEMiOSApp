@@ -9,7 +9,7 @@ import UIKit
 import SwiftyJSON
 
 /// The harvesting view controller that shows infos about harvesting for the current account.
-final class HarvestingViewController: UIViewController {
+class HarvestingViewController: UIViewController {
     
     // MARK: - View Controller Properties
     

@@ -28,7 +28,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 /// The view controller that lets the user create a new invoice.
-final class InvoiceCreationViewController: UIViewController {
+class InvoiceCreationViewController: UIViewController {
     
     // MARK: - View Controller Properties
     

@@ -11,7 +11,7 @@ import UIKit
     The account addition menu create new account view controller that lets
     the user create/generate a completely new account.
  */
-final class AccountAdditionMenuCreateNewAccountViewController: UIViewController {
+class AccountAdditionMenuCreateNewAccountViewController: UIViewController {
     
     // MARK: - View Controller Outlets
 

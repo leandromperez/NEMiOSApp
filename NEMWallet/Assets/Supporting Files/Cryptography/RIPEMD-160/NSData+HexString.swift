@@ -42,6 +42,7 @@ extension Data {
     }
 }
 
+
 extension NSData {
     public func toHexString () -> String {
         let sha256description = self.description as String

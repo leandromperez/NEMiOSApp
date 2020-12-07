@@ -8,7 +8,7 @@
 import UIKit
 
 /// The view controller that lets the user change the current application password.
-final class SettingsChangePasswordViewController: UITableViewController {
+class SettingsChangePasswordViewController: UITableViewController {
     
     // MARK: - View Controller Outlets
     

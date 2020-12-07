@@ -8,7 +8,7 @@
 import UIKit
 
 /// The view controller that lets the user add a new server.
-final class SettingsAddServerViewController: UITableViewController {
+class SettingsAddServerViewController: UITableViewController {
     
     // MARK: - View Controller Outlets
     
